@@ -1,8 +1,5 @@
-# react-web-app
+# react-shopping
 
-# 学习开发中。。。
+## sign
 
-* npm install
-* cd /static && php -S localhost:8888
-* npm run start
-> =============
+* wating...
