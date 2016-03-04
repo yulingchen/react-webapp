@@ -17,10 +17,10 @@ module.exports = {
   module: {
     loaders:[
       { test: /\.css$/, include: path.resolve(__dirname, 'app'), loader: 'style!css' },
-      { test: /\.scss$/, include: path.resolve(__dirname, 'app'), loader: ExtractTextPlugin.extract("style-loader", "css-loader!sass-loader?outputStyle=compressed")},
+      { test: /\.scss$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader!sass-loader?outputStyle=compressed")},
       { test: /\.js[x]?$/, include: path.resolve(__dirname, 'app'), exclude: /node_modules/, loader: 'babel-loader' },
       { test: /\.(png|jpg)$/, include: path.resolve(__dirname, 'app'), loader: 'url?limit=25000'},
-      { test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/, include: path.resolve(__dirname, 'app'), loader: 'url?limit=25000'}
+      { test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/, include: path.resolve(__dirname, 'app'), loader: 'url?limit=100000'}
     ]
   },
   resolve: {
@@ -34,9 +34,8 @@ module.exports = {
       }
     }),
     new CopyWebpackPlugin([
-      { from: './app/index.html', to: 'index.html' },
-      { from: './app/main.css', to: 'main.css' },
+      { from: './app/index.html', to: 'index.html' }
     ]),
-    // new ExtractTextPlugin('main.css')
+    new ExtractTextPlugin('app.css')
   ]
 };
