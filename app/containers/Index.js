@@ -19,41 +19,38 @@ import * as requestActions from '../actions/request.js'
 class Index extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      carousel: '',
-      appvipwrap: '',
-      appcatewrap: '',
-      appgoodwrap: ''
-    }
+    this.state = {}
   }
+  // componentWillMount() {
+  //   this.props.actions.request('Carousel')
+  //   this.props.actions.request('Appvipwrap')
+  //   this.props.actions.request('Appcatewrap')
+  //   this.props.actions.request('Appgoodwrap')
+  // }
   componentDidMount() {
-    this.props.actions.request('Carousel')
-    this.props.actions.request('Appvipwrap')
-    this.props.actions.request('Appcatewrap')
-    this.props.actions.request('Appgoodwrap')
-    // const { dispatch, selectedReddit } = this.props
-    // dispatch(fetchPostsIfNeeded(selectedReddit))
-    $q('Carousel')
+    $q('carousel')
       .then(data => {
-        this.setState({carousel: data.data})
+        this.setState({carousel: data})
       })
       .catch(error => console.log(error))
-
-    $q('Appvipwrap')
+    $q('goodsCate1')
       .then(data => {
-        this.setState({appvipwrap: data.data})
+        this.setState({cate01: data})
       })
       .catch(error => console.log(error))
-
-    $q('Appcatewrap')
+    $q('goodsCate2')
       .then(data => {
-        this.setState({appcatewrap: data.data})
+        this.setState({cate02: data})
       })
       .catch(error => console.log(error))
-
-    $q('Appgoodwrap')
+    $q('goodsCate3')
       .then(data => {
-        this.setState({appgoodwrap: data.data})
+        this.setState({cate03: data})
+      })
+      .catch(error => console.log(error))
+    $q('goodsCate4')
+      .then(data => {
+        this.setState({cate04: data})
       })
       .catch(error => console.log(error))
   }
@@ -63,9 +60,7 @@ class Index extends Component {
       width: '100%',
       height: 'auto'
     }
-    const appvipwrap = this.state.appvipwrap
-    const appcatewrap = this.state.appcatewrap
-    const appgoodwrap = this.state.appgoodwrap
+    const {cate01,cate02,cate03,cate04} = this.state
     return (
       <div>
         <Nav title="首页"
@@ -78,7 +73,7 @@ class Index extends Component {
               <i className="icon icon-my1"></i>
             </button>
           </Link>
-          <Link route="cart">
+          <Link route="goodsCart">
             <button className="button big" onClick={this.handleClick}>
               <i className="icon icon-cart"></i>
             </button>
@@ -86,9 +81,10 @@ class Index extends Component {
         </Nav>
         <Content hasNav={true}>
           <Carousel {...carousel} />
-          <AppVipWrap data={appvipwrap} />
-          <AppCateWrap data={appcatewrap} />
-          <AppGoodWrap data={appgoodwrap} />
+          <AppGoodWrap data={cate01} />
+          <AppGoodWrap data={cate02} />
+          <AppGoodWrap data={cate03} />
+          <AppGoodWrap data={cate04} />
         </Content>
       </div>
     )

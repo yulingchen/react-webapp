@@ -1,33 +1,26 @@
 import {combineReducers} from 'redux'
+import environment from './environment.js'
 
-// import { postsByReddit, selectedReddit}  from './reddit.js'
-// import { default as cart, getQuantity, getAddedIds } from './cart'
-// import { default as product, getProduct } from './product'
+import navigator from './navigator.js'
 
 import { default as commodity} from './buy.js'
 
 import { toaster, systemInfo } from './app.js'
 import { prueData } from './request.js'
 
-// export function getTotal(state) {
-//   return getAddedIds(state.cart).reduce((total, id) =>
-//     total + getProduct(state.product, id).price * getQuantity(state.cart, id),
-//     0
-//   ).toFixed(2)
-// }
-
-// export function getCartProducts(state) {
-//   return getAddedIds(state.cart).map(id => ({
-//     ...getProduct(state.product, id),
-//     quantity: getQuantity(state.cart, id)
-//   }))
-// }
+import { goodsList, goodsDetail, goodsCart, goodsTocart} from './goods.js'
 
 const rootReducer = combineReducers({
+  environment,
+  navigator,
   commodity,
   toaster,
   systemInfo,
-  prueData
+  prueData,
+  goodsList,
+  goodsDetail,
+  goodsCart,
+  goodsTocart
 })
 
 export default rootReducer

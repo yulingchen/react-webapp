@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import { initEnvironment } from '../actions/environment.js'
 
 import * as appActions from '../actions/app.js'
 
@@ -11,7 +12,8 @@ class App extends Component {
     super(props)
   }
   componentDidMount() {
-    // this.setState({screen: {width: screen.width}})
+    const {dispatch} = this.props
+    dispatch(initEnvironment())
   }
 
   renderToaster() {
@@ -32,7 +34,7 @@ class App extends Component {
         {this.renderToaster()}
         {children}
 
-        <ScrollUp showUnder={200} />
+        <ScrollUp showUnder={500} />
       </div>
     )
   }
@@ -46,7 +48,11 @@ App.propTypes = {
 }
 
 function mapStateToProps(state) {
+  const {environment} = state
   return {
+    height: environment.height,
+    width: environment.width,
+    isMobile: environment.isMobile,
     toaster: state.toaster,
     systemInfo: state.systemInfo
   }

@@ -1,0 +1,23 @@
+/**
+ * border
+ */
+
+@mixin box-border-top($bgColor: #CCCCCC) {
+  content: '';
+  height: 1px;
+  width: 100%;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  background: $bgColor;
+}
+
+@mixin box-border-bottom($bgColor: #CCCCCC) {
+  content: '';
+  height: 1px;
+  width: 100%;
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  background: $bgColor;
+}

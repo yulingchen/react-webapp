@@ -1,14 +1,26 @@
 import React, { Component, PropTypes } from 'react'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 import classNames from 'classnames/bind'
 
-export default class Nav extends Component {
+import * as navigatorActions from '../actions/navigator.js'
+
+class Nav extends Component {
   constructor(props) {
     super(props)
     this.handleClick = this.handleClick.bind(this)
   }
+  componentDidMount() {
+    // this.props.actions.pathBack()
+  }
   handleClick(e) {
     e.preventDefault()
-
+    // this.props.actions.pathBack()
+    // const {back} = this.props.navigator
+    // console.log(back)
+    // if (back > 0) {
+    //   this.context.router.goBack(-back)
+    // }
     const {back,go} = this.props
     if (go) {
       this.context.router.push(go)
@@ -17,8 +29,13 @@ export default class Nav extends Component {
     }
   }
   render() {
-    const {title,prevIcon,prevName} = this.props
+    const {title,prevIcon,prevName,goodsTocart} = this.props
 
+    const cartSign = goodsTocart.mixin.length
+    let cartDOM
+    if (cartSign) {
+      cartDOM = <div className="cartSign">{cartSign}</div>
+    }
     // default icon style
     let ICON
     prevIcon ? ICON = 'icon-' + prevIcon : ICON = 'icon'
@@ -43,6 +60,7 @@ export default class Nav extends Component {
         <div className="nav-btn">
           {this.props.children}
         </div>
+        {cartDOM}
       </div>
     )
   }
@@ -51,3 +69,18 @@ export default class Nav extends Component {
 Nav.contextTypes = {
   router: React.PropTypes.object.isRequired
 }
+
+Nav.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+}
+
+function mapStateToProps(state) {
+  const {goodsTocart} = state
+  return {
+    goodsTocart: goodsTocart
+  }
+}
+
+export default connect(
+  mapStateToProps,
+)(Nav)

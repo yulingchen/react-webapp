@@ -1,11 +1,4 @@
 
-/**
- * ==============
- * Nav
- */
-export const CHANGE_PATH = 'CHANGE_PATH'
-
-
 
 /**
  * ==============
@@ -25,6 +18,39 @@ export const RECEIVE_PRODUCT = 'RECEIVE_PRODUCT' //获取单个商品信息
  */
 export const GET_TOASTER = 'GET_TOASTER' // 获取提示信息
 export const GET_SYSTEMINFO = 'GET_SYSTEMINFO' // 获取系统信息
+/**
+ * ====================
+ * environment
+ * ====================
+ */
+export const CHANGE_IS_MOBILE = 'CHANGE_IS_MOBILE'
+export const CHANGE_WIDTH_AND_HEIGHT = 'CHANGE_WIDTH_AND_HEIGHT'
+/**
+ * ====================
+ * navigator
+ * ====================
+ */
+export const CHANGE_PATH = 'CHANGE_PATH'
+export const MIXIN_PATH = 'MIXIN_PATH'
+export const BACK_PATH = 'BACK_PATH'
+/**
+ * ====================
+ * goods
+ * ====================
+ */
+export const RECEIVE_GOODS_LIST = 'RECEIVE_GOODS_LIST'
+export const REQUEST_GOODS_LIST = 'REQUEST_GOODS_LIST'
+export const RECEIVE_GOODS_DETAIL = 'RECEIVE_GOODS_DETAIL'
+export const REQUEST_GOODS_DETAIL = 'REQUEST_GOODS_DETAIL'
+export const SELECT_GOODS_ATT = 'SELECT_GOODS_ATT'
+
+export const ADD_GOODS_COUNT = 'ADD_GOODS_COUNT'
+export const CUT_GOODS_COUNT = 'CUT_GOODS_COUNT'
+
+export const CLEAR_GOODS_MIXIN = 'CLEAR_GOODS_MIXIN'
+
+export const RECEIVE_CART = 'RECEIVE_CART'
+
 
 /**
  * ====================

@@ -1,13 +1,12 @@
 import React, { Component, PropTypes } from 'react'
 
+import Link from '../components/Link.js'
+
+import { requestGoodsList } from '../actions/goods.js'
+
 export default class AppCateWrap extends Component {
   constructor(props) {
     super(props)
-    this.handleClick = this.handleClick.bind(this)
-  }
-
-  handleClick() {
-    console.log('click')
   }
   render() {
     // data [Array]
@@ -22,9 +21,10 @@ export default class AppCateWrap extends Component {
           data.map((item,index)=>{
             return (
               <div key={index}
-                   className="item"
-                   onClick={this.handleClick}>
-                <img src={item.src} />
+                   className="item">
+                <Link route={"goodsCate/" + item.id}>
+                  <img src={item.src} />
+                </Link>
               </div>
             )
           })

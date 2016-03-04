@@ -40,10 +40,9 @@ export default class Carousel extends Component {
             data.map((item,index)=>{
               return (
                 <div key={index}>
-                  <Link route={item.go}>
+                  <Link route={"goodsDetail/" + item.id}>
                     <img style={carouselClass}
-                         src={item.src}
-                         alt={item.alt}/>
+                         src={item.gallery}/>
                   </Link>
                 </div>
               )
