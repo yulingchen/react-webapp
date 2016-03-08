@@ -11,9 +11,7 @@ import {$q} from '../utils/Request.js'
 export default class CateMap extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-
-    }
+    this.state = {}
   }
   componentDidMount() {
     $q('cate')

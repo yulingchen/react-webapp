@@ -23,7 +23,7 @@ export function request(api,args) {
   return dispatch => {
     dispatch(sendRequest(api,args))
 
-    return fetch(`http://localhost:8888/_${api}.json`)
+    return fetch(`http://caixie.net/react/static/_${api}.json`)
       .then(response => response.json())
       .then(json => {
         dispatch(receiveRequest(api,json))

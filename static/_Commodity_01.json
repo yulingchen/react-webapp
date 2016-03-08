@@ -1,0 +1,32 @@
+{
+    "id": 10001,
+    "description": {
+        "gallery": [
+            {
+                "src": "http://caixie.net/react/static/timg_1.jpeg",
+                "alt": "描述"
+            }
+        ],
+        "title": "歌歌宝贝 GG.baby 婴儿夹棉保暖棉衣套装 绿",
+        "subtitle": "婴儿冬季夹棉保暖套装，面料柔软舒适，聚酯纤维填充保暖舒适，松紧柔软腰头，亲肤透气，两用档设计让妈妈很放心。",
+        "attribute": "商品属性描述",
+        "description": "商品图文描述"
+    },
+    "attribute": [
+        {
+            "name": "红色",
+            "inventory": 5,
+            "price": 90
+        },
+        {
+            "name": "绿色",
+            "inventory": 10,
+            "price": 100
+        },
+        {
+            "name": "黄色",
+            "inventory": 3,
+            "price": 100
+        }
+    ]
+}

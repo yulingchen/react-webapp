@@ -46,7 +46,7 @@ const receivePosts = (reddit, json) => {
 const fetchPosts = (reddit) => {
   return dispatch => {
     dispatch(requestPosts(reddit))
-    return fetch(`http://localhost:8888/_${reddit}.json`)
+    return fetch(`http://caixie.net/react/static/_${reddit}.json`)
       .then(response => response.json())
       .then(json => {
         dispatch(receivePosts(reddit, json))

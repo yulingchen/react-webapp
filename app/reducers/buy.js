@@ -7,7 +7,7 @@ const initialState = {
   "description": {
     "gallery": [
       {
-        "src": "http://localhost:8888/timg_1.jpeg",
+        "src": "http://caixie.net/react/static/timg_1.jpeg",
         "alt": "描述"
       }
     ],

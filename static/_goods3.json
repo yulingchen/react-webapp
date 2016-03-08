@@ -1,0 +1,19 @@
+{
+    "id": 3,
+    "cate": "milk",
+    "title": "惠氏 Wyeth 启赋 亲和人体配方幼儿奶粉3段 1-3Y 900g",
+    "subtitle": "来自欧洲纯净的海岛牧场，独有的珍稀结构脂O-P-O，促进宝宝能量和钙的吸收，不上火，DHA:AA 黄金配比1:1-1:2，是非常接近母乳的黄金比例，严苛科学，成就高端品质！",
+    "gallery": "http://caixie.net/react/static/goods07.png",
+  "attribute": [
+    {
+      "name": "大瓶",
+      "inventory": 1,
+      "price": 199
+    },
+    {
+      "name": "小瓶",
+      "inventory": 0,
+      "price": 80
+    }
+  ]
+}

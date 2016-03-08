@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "cate": "milk",
+        "title": "德国原装 Aptamil 婴儿配方奶粉pre段0~6M 800g*2罐",
+        "subtitle": "蜜芽不惜远赴千里，只为宝宝的好奶粉！保税区发货，层层监管，更加放心！泡沫盒+纸箱双重包装，给宝宝贴心的呵护。根据海关总署第56号文规定，单笔订单500元以内将免征行邮税额，为保障您能顺利收到商品，收件人姓名请务必用真名并提交身份证号码。免税好奶粉，就在蜜芽宝贝！",
+        "gallery": "http://caixie.net/react/static/goods05.png",
+        "price": 100,
+        "cut": 5
+    },
+    {
+        "id": 2,
+        "cate": "milk",
+        "title": "荷兰原装 Nutrilon 婴幼儿奶粉3段10M+800g*2罐",
+        "subtitle": "",
+        "gallery": "http://caixie.net/react/static/goods06.png",
+        "price": 169,
+        "cut": 9
+    },
+    {
+        "id": 3,
+        "cate": "milk",
+        "title": "惠氏 Wyeth 启赋 亲和人体配方幼儿奶粉3段 1-3Y 900g",
+        "subtitle": "来自欧洲纯净的海岛牧场，独有的珍稀结构脂O-P-O，促进宝宝能量和钙的吸收，不上火，DHA:AA 黄金配比1:1-1:2，是非常接近母乳的黄金比例，严苛科学，成就高端品质！",
+        "gallery": "http://caixie.net/react/static/goods07.png",
+        "price": 300,
+        "cut": 2
+    },
+    {
+        "id": 4,
+        "cate": "milk",
+        "title": "爱他美 Aptamil 婴儿配方奶粉 1段 0-6m 800g*2罐",
+        "subtitle": "德国爱宝美Aptamil针对有蛋白质过敏的宝宝，可以降低50%的蛋白质过敏的可能性。为新生儿带来母乳专利Aptamil包含牛奶。蛋白质。脂肪和矿物制提炼的近乎母乳的奶粉高质量的兼容乳糖(乳糖)及母乳所包含的营养。作为新生儿专属食物完全自然地哺乳您的婴孩提高免疫系统。（1段不参与任何活动）！",
+        "gallery": "http://caixie.net/react/static/goods08.png",
+        "price": 199,
+        "cut": 8
+    }
+]

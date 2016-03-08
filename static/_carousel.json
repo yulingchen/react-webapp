@@ -1,0 +1,18 @@
+[
+    {
+        "id": 1,
+        "gallery": "http://caixie.net/react/static/goods01.png"
+    },
+    {
+        "id": 5,
+        "gallery": "http://caixie.net/react/static/goods02.png"
+    },
+    {
+        "id": 7,
+        "gallery": "http://caixie.net/react/static/goods3.png"
+    },
+    {
+        "id": 10,
+        "gallery": "http://caixie.net/react/static/goods4.png"
+    }
+]

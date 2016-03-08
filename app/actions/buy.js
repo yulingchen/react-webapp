@@ -19,7 +19,7 @@ function receiveCommodity(commodity) {
 
 export function getCommodity(api,args) {
   return dispatch => {
-    fetch(`http://localhost:8888/_Products${api}.json`)
+    fetch(`http://caixie.net/react/static/_Products${api}.json`)
       .then(response => response.json())
       .then(json => {
         dispatch(receiveCommodity(json))

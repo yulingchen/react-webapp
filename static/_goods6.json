@@ -1,0 +1,19 @@
+{
+    "id": 6,
+    "cate": "clothes",
+    "title": "贝贝豆丁 0-5岁男女宝宝春秋套装 红纯棉",
+    "subtitle": "时尚的宝宝套装，可爱的卡通图像，搭配潮流条纹裤子，个性化的简洁设计，童趣十足总能让宝宝脱颖而出，简洁又不失优雅，两种面料的厚度可选，只给宝宝最好的，让宝宝更加萌萌哒！",
+    "gallery": "http://caixie.net/react/static/goods10.png",
+  "attribute": [
+    {
+      "name": "黄色",
+      "inventory": 10,
+      "price": 100
+    },
+    {
+      "name": "蓝色",
+      "inventory": 1,
+      "price": 80
+    }
+  ]
+}

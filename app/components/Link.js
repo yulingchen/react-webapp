@@ -22,9 +22,7 @@ export default class Link extends Component {
     return (
       <a onClick = {this.handleClick}
          title = {title ? title : ''} >
-        
         {children}
-
       </a>
     )
   }

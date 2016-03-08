@@ -18,7 +18,7 @@ function receiveGoodsList(goodsList) {
 
 export function requestGoodsList(api,args) {
   return dispatch => {
-    fetch(`http://localhost:8888/_goodsCate${api}.json`)
+    fetch(`http://caixie.net/react/static/_goodsCate${api}.json`)
       .then(response => response.json())
       .then(json => {
         dispatch(receiveGoodsList(json))
@@ -36,7 +36,7 @@ function receiveGoodsDetail(goodsDetail) {
 
 export function requestGoodsDeatil(api,args) {
   return dispatch => {
-    fetch(`http://localhost:8888/_goods${api}.json`)
+    fetch(`http://caixie.net/react/static/_goods${api}.json`)
       .then(response => response.json())
       .then(json => {
         dispatch(receiveGoodsDetail(json))

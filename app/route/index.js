@@ -19,13 +19,13 @@ import Home from '../containers/Home'
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={Index} />
-    <Route path="cart" component={Cart} />
-    <Route path="catemap" component={CateMap} />
-    <Route path="me" component={Me} />
-    <Route path="goodsDetail/:id" component={GoodsDetail} />
-    <Route path="goodsCate/:id" component={GoodsCate} />
-    <Route path="goodsCart" component={GoodsCart} />
-    <Route path="home" component={Home} />
+    <Route path="/cart" component={Cart} />
+    <Route path="/catemap" component={CateMap} />
+    <Route path="/me" component={Me} />
+    <Route path="/goodsDetail/:id" component={GoodsDetail} />
+    <Route path="/goodsCate/:id" component={GoodsCate} />
+    <Route path="/goodsCart" component={GoodsCart} />
+    <Route path="/home" component={Home} />
     <Route path="*" component={NotFound}/>
   </Route>
 )

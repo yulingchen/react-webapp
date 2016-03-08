@@ -1,0 +1,84 @@
+.product-detail {
+  position: relative;
+  padding: 0.8em;
+  .des {
+
+    .price {
+      color: map-get($colors, assertive);
+    }
+    .content {
+      color: $text-color-des;
+    }
+  }
+
+  .choose {
+    margin-top: 1em;
+
+    .pcolor {
+      padding: 0.5em;
+      span {
+        margin: 0.3em;
+        padding: 0.3em;
+        border: 1px solid $border-color;
+        border-radius: 0.5em;
+      }
+    }
+
+    .count {
+      padding: 0.5em 0;
+      .count-btn {
+        border-radius: 0.5em;
+        padding: 0.3em;
+      }
+    }
+  }
+
+  .promise {
+    margin-top: 1em;
+  }
+
+  .buy-tool {
+    text-align: center;
+    width: 100%;
+    height: $bar-height;
+    line-height: $bar-height;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    
+    div {
+      display: inline-block;
+    }
+    .talk {
+      width: 15%;
+    }
+    .shop {
+      width: 15%;
+    }
+    .collect {
+      width: 15%;
+    }
+    .cart {
+      width: 30%;
+      height: $bar-height;
+      background: map-get($colors, orange);
+      color: #fff;
+    }
+
+    .buy {
+      width: 25%;
+      height: $bar-height;
+      background: map-get($colors, jacinth);
+      color: #fff;
+    }
+    &:before {
+      content: '';
+      height:1px;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: $border-color;
+    }
+  }
+}

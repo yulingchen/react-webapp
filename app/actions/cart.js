@@ -11,7 +11,7 @@ function receiveProduct(product) {
 
 export function getProduct(api) {
   return dispatch => {
-    fetch(`http://localhost:8888/_Products${api}.json`)
+    fetch(`http://caixie.net/react/static/_Products${api}.json`)
       .then(response => response.json())
       .then(json => {
         dispatch(receiveProduct(json))
@@ -44,7 +44,7 @@ export function checkout(product) {
     dispatch({
       type: types.CHECKOUT_REQUEST
     })
-    fetch(spellApi('http://'),{
+    fetch(spellApi('http://caixie.net/react/static/'),{
       method: 'post',
       headers: {
         'Accept': 'application/json',

@@ -1,0 +1,19 @@
+{
+    "id": 7,
+    "cate": "food",
+    "title": "九日 九日蜂蜜黄油薯片 60g *2",
+    "subtitle": "薯片中的爱马仕 完全颠覆了以往对薯片味道的认知！加入蜂蜜黄油 全韩疯抢 甜而不腻 芳香伊人。如果还没吃这款薯片都不好意思叫吃货。exo、rain、金秀贤、张根硕、金在中等韩国明星也对它钟情！！吃了绝对不会忘记的味道。",
+    "gallery": "http://caixie.net/react/static/goods11.png",
+  "attribute": [
+    {
+      "name": "大包",
+      "inventory": 10,
+      "price": 10
+    },
+    {
+      "name": "小包",
+      "inventory": 1,
+      "price": 8
+    }
+  ]
+}

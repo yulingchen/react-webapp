@@ -8,7 +8,7 @@ export default class AutoDIV extends Component {
     return (
       <div className="auto-div">
         <img className="auto-div-img"
-             src="http://localhost:8888/autoDIV.png" />
+             src="http://caixie.net/react/static/autoDIV.png" />
         <div className="box">
           {this.props.children}
         </div>
