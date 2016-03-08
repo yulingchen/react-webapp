@@ -1,1 +1,1 @@
-export const BASE_API = 'http://caixie.net/react/static/'
+export const BASE_API = 'http://www.caixie.net/static/'

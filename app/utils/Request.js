@@ -1,5 +1,5 @@
 import 'isomorphic-fetch'
-export const SERVER_API = 'http://caixie.net/react/static/'
+export const SERVER_API = 'http://www.caixie.net/static/'
 
 // spellApi = (api) => (
 //   SERVER_API + `_${api}.json`
