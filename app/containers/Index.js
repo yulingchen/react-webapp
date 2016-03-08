@@ -1,114 +1,60 @@
+/**
+ * 首页
+ *
+ */
+
 import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import AppCateWrap from '../components/AppCateWrap.js'
-import AppVipWrap from '../components/AppVipWrap.js'
-import AppGoodWrap from '../components/AppGoodWrap.js'
+import AppBar from '../components/AppBar.js'
 import Carousel from '../components/Carousel.js'
-import Content from '../components/Content.js'
+import GoodsList from '../components/GoodsList.js'
 import Link from '../components/Link.js'
-import Nav from '../components/Nav.js'
-
+import CartIcon from '../components/CartIcon.js'
 import {$q} from '../utils/Request.js'
 
-import * as requestActions from '../actions/request.js'
-
-// import { selectReddit, fetchPostsIfNeeded, invalidateReddit } from '../actions/reddit.js'
-
-class Index extends Component {
+export default class Index extends Component {
   constructor(props) {
     super(props)
     this.state = {}
   }
-  // componentWillMount() {
-  //   this.props.actions.request('Carousel')
-  //   this.props.actions.request('Appvipwrap')
-  //   this.props.actions.request('Appcatewrap')
-  //   this.props.actions.request('Appgoodwrap')
-  // }
-  componentDidMount() {
+  componentWillMount() {
     $q('carousel')
       .then(data => {
         this.setState({carousel: data})
       })
       .catch(error => console.log(error))
-    $q('goodsCate1')
+    $q('goodslist')
       .then(data => {
-        this.setState({cate01: data})
-      })
-      .catch(error => console.log(error))
-    $q('goodsCate2')
-      .then(data => {
-        this.setState({cate02: data})
-      })
-      .catch(error => console.log(error))
-    $q('goodsCate3')
-      .then(data => {
-        this.setState({cate03: data})
-      })
-      .catch(error => console.log(error))
-    $q('goodsCate4')
-      .then(data => {
-        this.setState({cate04: data})
+        this.setState({goodslist: data})
       })
       .catch(error => console.log(error))
   }
+  componentDidMount() {
+
+  }
   render() {
+    const {goodslist} = this.state
     const carousel = {
       data: this.state.carousel,
       width: '100%',
       height: 'auto'
     }
-    const {cate01,cate02,cate03,cate04} = this.state
     return (
       <div>
-        <Nav title="首页"
-             prevName=""
-             prevIcon="sort"
-             back=""
-             go="/catemap">
-          <Link route="me">
-            <button className="button big">
-              <i className="icon icon-my1"></i>
-            </button>
-          </Link>
-          <Link route="goodsCart">
-            <button className="button big" onClick={this.handleClick}>
-              <i className="icon icon-cart"></i>
-            </button>
-          </Link>
-        </Nav>
-        <Content hasNav={true}>
+        <AppBar title="shopping"
+                prevName=""
+                prevIcon="sort"
+                back=""
+                go="cate">
+          <CartIcon />
+        </AppBar>
+        <div className="has-bar">
           <Carousel {...carousel} />
-          <AppGoodWrap data={cate01} />
-          <AppGoodWrap data={cate02} />
-          <AppGoodWrap data={cate03} />
-          <AppGoodWrap data={cate04} />
-        </Content>
+          <GoodsList data={goodslist} />
+        </div>
       </div>
     )
   }
 }
-
-Index.propTypes = {
-  prueData: PropTypes.object.isRequired,
-  actions: PropTypes.object.isRequired
-}
-
-function mapStateToProps(state) {
-  return {
-    prueData: state.prueData
-  }
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(requestActions, dispatch)
-  }
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Index)

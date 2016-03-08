@@ -6,7 +6,6 @@ import { Router, useRouterHistory, browserHistory} from 'react-router'
 import route from './route'
 import configureStore from './store/configureStore.js'
 
-import { getProduct } from './actions/cart.js'
 
 import './styles/app.scss'
 

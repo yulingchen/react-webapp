@@ -1,33 +1,39 @@
 /**
- * 404
+ * 分类
  */
 
 import React, { Component, PropTypes } from 'react'
 
 import AppBar from '../components/AppBar.js'
+import CateMap from '../components/CateMap.js'
+import {$q} from '../utils/Request.js'
 
-export default class NotFound extends Component {
+export default class Cate extends Component {
   constructor(props) {
     super(props)
+    this.state = {}
+  }
+  componentDidMount() {
+    $q('cate')
+      .then(data => {
+        this.setState({data: data})
+      })
+      .catch(error => console.log(error))
   }
   render() {
-    const notFoundStyle = {
-      textAlign: 'center',
-      fontSize: '200px',
-      paddingTop: '150px'
-    }
+    const { data } = this.state
     return (
       <div>
-        <AppBar title="404"/>
-        <div className="has-bar" style={notFoundStyle}>
-          404
+        <AppBar title="分类"/>
+        <div className="has-bar">
+          <CateMap data={data} />
         </div>
       </div>
     )
   }
 }
 
-NotFound.propTypes = {
+Cate.propTypes = {
   // string: PropTypes.string.isRequired,
   // array: PropTypes.array.isRequired,
   // bool: PropTypes.bool.isRequired,

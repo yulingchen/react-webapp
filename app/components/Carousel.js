@@ -28,28 +28,28 @@ export default class Carousel extends Component {
       width: this.props.width,
       height: this.props.height
     }
-
-    // return
-    if (!data)
-      return <div>/</div>
-    
+    if (!data) {
+      return <div></div>
+    }
     return (
-      <div className="slider">
-        <Slider {...settings}>
-          {
-            data.map((item,index)=>{
-              return (
-                <div key={index}>
-                  <Link route={"goodsDetail/" + item.id}>
-                    <img style={carouselClass}
-                         src={item.gallery}/>
-                  </Link>
-                </div>
-              )
-            })
-          }
-        </Slider>
-      </div>
+      <Slider {...settings}>
+        {
+          data.map((item,index)=>{
+            return (
+              <div key={index}>
+                <Link route={"/detail/" + item.id}>
+                  <img style={carouselClass}
+                       src={item.gallery}/>
+                </Link>
+              </div>
+            )
+          })
+        }
+      </Slider>
     )
   }
+}
+
+Carousel.propTypes = {
+  // data: PropTypes.array.isRequired
 }
