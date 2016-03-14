@@ -16,6 +16,7 @@ import List from '../containers/List.js'
 import Detail from '../containers/Detail.js'
 import Cart from '../containers/Cart.js'
 import Home from '../containers/Home.js'
+import Contact from '../containers/Contact.js'
 
 export default (
   <Route path="/" component={App}>
@@ -25,6 +26,7 @@ export default (
     <Route path="/detail/:id" component={Detail}/>
     <Route path="/cart" component={Cart}/>
     <Route path="/home" component={Home}/>
+    <Route path="/contact" component={Contact}/>
     <Route path="*" component={NotFound}/>
   </Route>
 )

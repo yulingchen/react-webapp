@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
+import ScrollUp from '../components/ScrollUp.js'
+
 import { initEnvironment } from '../actions/environment.js'
 
 class App extends Component {
@@ -17,6 +19,7 @@ class App extends Component {
     return (
       <div>
         {children}
+        <ScrollUp showUnder={500} />
       </div>
     )
   }

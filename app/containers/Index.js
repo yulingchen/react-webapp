@@ -8,11 +8,12 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
 import AppBar from '../components/AppBar.js'
-import Carousel from '../components/Carousel.js'
 import GoodsList from '../components/GoodsList.js'
 import Link from '../components/Link.js'
 import CartIcon from '../components/CartIcon.js'
 import {$q} from '../utils/Request.js'
+
+import Wrapper from '../components/Wrapper.js'
 
 export default class Index extends Component {
   constructor(props) {
@@ -30,9 +31,19 @@ export default class Index extends Component {
         this.setState({goodslist: data})
       })
       .catch(error => console.log(error))
+    $q('wrapper')
+      .then(data => {
+        this.setState({wrapper: data})
+      })
+      .catch(error => console.log(error))
   }
   componentDidMount() {
 
+  }
+  renderWrapper(wrapper) {
+    if (wrapper.data) {
+      return <Wrapper {...wrapper} />
+    }
   }
   render() {
     const {goodslist} = this.state
@@ -40,6 +51,12 @@ export default class Index extends Component {
       data: this.state.carousel,
       width: '100%',
       height: 'auto'
+    }
+
+    const wrapper = {
+      data: this.state.wrapper,
+      trLength: 4,
+      tdLength: 2
     }
     return (
       <div>
@@ -51,7 +68,7 @@ export default class Index extends Component {
           <CartIcon />
         </AppBar>
         <div className="has-bar">
-          <Carousel {...carousel} />
+          {this.renderWrapper(wrapper)}
           <GoodsList data={goodslist} />
         </div>
       </div>

@@ -264,3 +264,31 @@
   }
 }
 
+/**
+ * wrapper
+ */
+.wrapper {
+  position: relative;
+  box-sizing: border-box;
+  padding-bottom: 14px;
+  background: #fff;
+
+  .item {
+    display: block;
+    box-sizing: border-box;
+    float: left;
+    text-align: center;
+  }
+}
+
+
+/**
+ * contacts
+ */
+.isAnimated {
+  bottom: 0;
+  top: auto;
+}
+.isHidden {
+  visibility: hidden;
+}
