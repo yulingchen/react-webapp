@@ -1,53 +1,82 @@
+/**
+ * App header
+ */
+
 import React, { Component, PropTypes } from 'react'
-import classNames from 'classnames/bind'
 
 export default class AppBar extends Component {
+  
   constructor(props) {
     super(props)
-    this.handleHistoryClick = this.handleHistoryClick.bind(this)
+    this.renderAppBarLeft = this.renderAppBarLeft.bind(this)
+    this.renderAppBarCenter = this.renderAppBarCenter.bind(this)
+    this.renderAppBarRight = this.renderAppBarRight.bind(this)
+    this.defaultGoBack = this.defaultGoBack.bind(this)
   }
 
-  handleHistoryClick(e) {
+  defaultGoBack(e) {
     e.preventDefault()
-    const {back,go} = this.props
-    if (go) {
-      this.context.router.push(go)
-    } else {
-      this.context.router.goBack()
+    this.context.router.goBack()
+  }
+
+  renderAppBarLeft() {
+    const {left} = this.props
+    if (!left) {
+      const style = {
+        padding: '15px 5px',
+        fontSize: '24px'
+      }
+      return <i className="ion ion-back"
+                style={style}
+                onClick={this.defaultGoBack}></i>
+    }
+    return left
+  }
+
+  renderAppBarCenter() {
+    const {title,children} = this.props
+    if (!children) {
+      const style = {
+        fontSize: '20px'
+      }
+      return <span style={style}>{title}</span>
+    }
+    if (children) {
+      return children
     }
   }
 
+  renderAppBarRight() {
+    const {right} = this.props
+    if (!right) {
+      return
+    }
+    return right
+  }
   render() {
-    const {title, prevIcon, prevName, children} = this.props
-    let prevIconName
-    prevIcon ? prevIconName = 'icon-' + prevIcon : prevIconName = 'icon'
-    const prevIconClass = classNames(
-      prevIconName,
-      {
-        'icon': prevIcon,
-        'icon-back': !prevIcon
-      }
-    )
     return (
-      <div className="app-bar">
+      <header className="app-bar">
         <div className="bar-left">
-          <i className={prevIconClass}
-             onClick={this.handleHistoryClick}></i>
-          {prevName}
+          {this.renderAppBarLeft()}
         </div>
         <div className="bar-center">
-          {title}
+          {this.renderAppBarCenter()}
         </div>
         <div className="bar-right">
-          {children}
+          {this.renderAppBarRight()}
         </div>
-      </div>
+      </header>
     )
   }
 }
+
 AppBar.contextTypes = {
   router: React.PropTypes.object.isRequired
 }
-AppBar.propTypes = {
 
+AppBar.propTypes = {
+  children: PropTypes.node,
+  left: PropTypes.node,
+  right: PropTypes.node,
+  title: PropTypes.string
 }

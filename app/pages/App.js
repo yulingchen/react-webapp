@@ -2,32 +2,42 @@ import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import ScrollUp from '../components/ScrollUp.js'
+import Scroll2Top from '../components/Scroll2Top.js'
 
 import { initEnvironment } from '../actions/environment.js'
 
 class App extends Component {
+
   constructor(props) {
     super(props)
   }
+
+  /**
+   * diapatch environment
+   */
   componentDidMount() {
     const {dispatch} = this.props
     dispatch(initEnvironment())
   }
+
+  /**
+   * App render
+   * includes[children|Scroll2Top]
+   */
   render() {
-    const { children } = this.props
     return (
       <div>
-        {children}
-        <ScrollUp showUnder={500} />
+        {this.props.children}
+        <Scroll2Top showUnder={10} />
       </div>
     )
   }
+  
 }
 
 App.propTypes = {
   children: PropTypes.node,
-  dispatch: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {

@@ -1,5 +1,7 @@
+
 #root {
   height: 100%;
+  font-size: 14px;
 }
 
 img {
@@ -40,24 +42,52 @@ img {
  * color
  */
 .note {
-  color: $text-color-wrap;
+  color: $noteColor;
 }
 
 /**
  * app
  */
 
-.has-bar {
-  margin-top: $app-bar-height;
+.has-header {
+  padding-top: $headerHeight;
 }
 
+/**
+ * icon
+ */
+.icon-left,.icon-right {
+  position: relative;
+  &:before {
+    position: absolute;
+  }
+}
+.icon-left:before {
+  left: -20px;
+}
+.icon-right:before {
+  right: -20px;
+}
 
+/**
+ * title
+ */
+.list-title {
+  height: $liHeight;
+  line-height: $liHeight;
+  background: $bgColor;
+  text-indent: 10px;
+}
 
-
-
-
-
-
+/**
+ * list
+ */
+.list-box-sizing {
+  display: inline-block;
+  margin: 10px;
+  border: 1px solid #ccc;
+  padding: 8px 15px;
+}
 
 
 

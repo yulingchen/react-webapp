@@ -4,29 +4,19 @@ import { Route, IndexRoute} from 'react-router'
 /**
  * common
  */
-import App from '../containers/App.js'
-import NotFound from '../containers/NotFound.js'
+import App from '../pages/App.js'
+import NotFound from '../pages/NotFound.js'
 
 /**
  * page
  */
-import Index from '../containers/Index.js'
-import Cate from '../containers/Cate.js'
-import List from '../containers/List.js'
-import Detail from '../containers/Detail.js'
-import Cart from '../containers/Cart.js'
-import Home from '../containers/Home.js'
-import Contact from '../containers/Contact.js'
+import Index from '../pages/Index.js'
+import City from '../pages/City.js'
 
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={Index} />
-    <Route path="/cate" component={Cate}/>
-    <Route path="/list/:id" component={List}/>
-    <Route path="/detail/:id" component={Detail}/>
-    <Route path="/cart" component={Cart}/>
-    <Route path="/home" component={Home}/>
-    <Route path="/contact" component={Contact}/>
+    <Route path="city" component={City}/>
     <Route path="*" component={NotFound}/>
   </Route>
 )
