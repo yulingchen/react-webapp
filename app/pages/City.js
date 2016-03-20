@@ -43,10 +43,10 @@ export default class City extends Component {
   renderAppBar() {
     const rightStyle = {
       fontSize: 24,
-      padding: '15px 5px'
+      padding: '15px 10px'
     }
     const right = <Link route=""><i style={rightStyle} className="ion ion-homefill"></i></Link>
-    return <AppBar right={right}/>
+    return <AppBar right={right} title="选择城市" />
   }
 
   renderSearch() {

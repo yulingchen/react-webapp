@@ -8,9 +8,9 @@
   left: 0;
   display: block;
   width: 100%;
-  height: $headerHeight;
+  height: $barHeight;
   overflow: hidden;
-  line-height: $headerHeight;
+  line-height: $barHeight;
   font-size: 16px;
   background: $theme;
   color: #FFFFFF;
@@ -46,10 +46,9 @@
 
 .search {
   position: relative;
-  height: auto;
-  background: #FFF;
-  height: $liHeight;
-  line-height: $liHeight;
+  background: $bg;
+  height: $rowHeight;
+  line-height: $rowHeight;
   overflow: hidden;
   input {
     position: absolute;
@@ -59,33 +58,118 @@
     height: 100%;
     padding-left: 10px;
     padding-right: 60px;
-    box-sizing:border-box;
-    -webkit-box-sizing:border-box;
-    box-shadow: none;
-    -webkit-box-shadow: none;
-    border: 1px solid $borderColor;
   }
-
   button {
     display: block;
     position: absolute;
     right: 0;
     top: 0;
     width: 60px;
-    height: $liHeight;
-    line-height: $liHeight;
-    text-align: center;
-    cursor: pointer;
-    box-sizing:border-box;
-    -webkit-box-sizing:border-box;
-    box-shadow: none;
-    -webkit-box-shadow: none;
+    height: $rowHeight;
+    line-height: $rowHeight;
     border: 0;
     padding: 0;
     font-size: 20px;
     color: #FFF;
     background: map-get($colors, assertive);
   }
+}
+
+/**
+ * SearchAuto
+ */
+.search-auto {
+  position: relative;
+  height: $rowHeight;
+  line-height: $rowHeight;
+  position: relative;
+
+  .input {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    overflow: hidden;
+    -webkit-transition: .3s;
+    transition: .3s;
+    z-index: 9;
+
+    input {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 20px;
+      padding-left: 10px;
+      padding-right: 60px;
+    }
+    button {
+      display: block;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 60px;
+      height: $rowHeight;
+      line-height: $rowHeight;
+      border: 0;
+      padding: 0;
+      font-size: 20px;
+      color: map-get($colors, assertive);
+      background: none;
+    }
+  }
+
+  .cancel {
+    position: absolute;
+    width: 10%;
+    text-align: center;
+    right: 0px;
+    top: 0px;
+    opacity: 0;
+    -webkit-transition: 1s;
+    transition: 1s;
+  }
+
+  .suggestion {
+    position: absolute;
+    display: none;
+    left: 12px;
+    right: 12px;
+    top: 42px;
+    background: #fff;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 13px;
+    z-index: 20;
+    box-shadow: 0 4px 10px rgba(0,0,0,.1);
+    -webkit-box-shadow: 0 4px 10px rgba(0,0,0,.1);
+
+    ul {
+
+      li {
+        @extend row;
+        padding: 0 10px;
+        border-bottom: 1px solid $borderColor;
+
+        .tip {
+          position: absolute;
+          right: 10px;
+          color: $noteColor;
+        }
+      }
+    }
+
+    .des {
+      color: $jacinth;
+      text-align: center;
+      padding: 5px 0;
+      letter-spacing: 5px;
+    }
+  }
+
 }
 
 /**
@@ -96,24 +180,23 @@
   padding: 10px;
   position: relative;
 
-  .letters-box {
+  .let-box {
 
-    .lettersul {
+    .let-ul {
       display: inline-block;
       width: 16.666666666666668%;
-      height: 40px;
-      line-height: 40px;
+      @extend row;
       text-align: center;
       color: #296da1;
     }
     
-    .lettersli {
+    .let-li {
       list-style: none;
       border-top: 1px solid #e5e5e5;
       border-bottom: 1px solid #e5e5e5;
       display: none;
-      // 
-      .title {
+      
+      .let-li-title {
         position: absolute;
         width: 50px;
         font-size: 30px;
@@ -122,7 +205,7 @@
         box-sizing:border-box;
         -webkit-box-sizing:border-box;
       }
-      .citys {
+      .let-li-citys {
         width: 100%;
         padding-left: 50px;
         box-sizing:border-box;
