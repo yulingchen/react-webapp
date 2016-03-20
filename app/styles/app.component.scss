@@ -219,3 +219,25 @@
     }
   }
 }
+
+/**
+ * CartWrapper
+ */
+.catgs {
+  position: relative;
+  box-sizing: border-box;
+  padding: 10px 0 30px 0;
+  background: $white;
+  border-bottom: 1px solid $borderColor;
+
+  .item {
+    display: block;
+    box-sizing: border-box;
+    float: left;
+    text-align: center;
+  }
+
+  .slick-dots {
+    bottom: auto;
+  }
+}

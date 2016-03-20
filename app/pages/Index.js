@@ -8,7 +8,10 @@ import React, { Component, PropTypes } from 'react'
 import AppBar from '../components/AppBar.js'
 import Link from '../components/Link.js'
 import SearchAuto from '../components/SearchAuto.js'
+import Banners from '../components/Banners.js'
+import CatgWraps from '../components/CatgWraps.js'
 
+import {$q} from '../utils/server.js'
 import {getCityChecked} from '../utils/localStorage.js'
 
 
@@ -24,7 +27,16 @@ export default class Index extends Component {
   }
 
   componentDidMount() {
-
+    $q('banners')
+      .then(data => {
+        this.setState({banners: data})
+      })
+      .catch(error => console.log(error))
+    $q('catgs')
+      .then(data => {
+        this.setState({catgs: data})
+      })
+      .catch(error => console.log(error))
   }
 
   searchTodo(val) {
@@ -60,12 +72,39 @@ export default class Index extends Component {
     )
   }
 
+  renderBanners() {
+    if (this.state.banners) {
+    return <Banners data={this.state.banners} />
+    }
+  }
+
+  /**
+   * [renderCatgWraps]
+   * 
+   * @return {DOM} [返回dom节点]
+   * 
+   * data格式:[{id:0,order:0,name:'',icon:''},...]
+   * trLength tdLength 个数比例
+   */
+  renderCatgWraps() {
+      if (this.state.catgs) {
+      const mixin = {
+        data: this.state.catgs,
+        trLength: 4,
+        tdLength: 2
+      }
+      return <CatgWraps {...mixin} />
+    }
+  }
+
   render() {
     
     return (
       <div className="has-header">
         {this.renderAppBar()}
         {this.renderSearchAuto()}
+        {this.renderBanners()}
+        {this.renderCatgWraps()}
       </div>
     )
   }
