@@ -30,9 +30,10 @@ class App extends Component {
     return (
       <div style={style}>
         <ReactCSSTransitionGroup component="div"
+                                 style={{height: '100%'}}
                                  transitionName="page"
-                                 transitionEnterTimeout={300}
-                                 transitionLeaveTimeout={300}>
+                                 transitionEnterTimeout={0}
+                                 transitionLeaveTimeout={0}>
           {React.cloneElement(this.props.children, {
             key: this.props.location.pathname
           })}
