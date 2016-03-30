@@ -25,8 +25,11 @@ class App extends Component {
    * includes[children|Scroll2Top]
    */
   render() {
+    const style= {
+      height: '100%'
+    }
     return (
-      <div>
+      <div style={style}>
         {this.props.children}
         <Scroll2Top showUnder={10} />
       </div>
