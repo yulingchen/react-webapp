@@ -23,7 +23,7 @@ export default (
     <Route path="/city" component={City}/>
     <Route path="/me" component={Me}/>
     <Route path="/login" component={Login}/>
-    <Route path="/reg" component={Register}/>
+    <Route path="/register" component={Register}/>
     <Route path="*" component={NotFound}/>
   </Route>
 )

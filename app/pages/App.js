@@ -1,9 +1,8 @@
 import React, { Component, PropTypes } from 'react'
-import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 import Scroll2Top from '../components/Scroll2Top.js'
-
 import { initEnvironment } from '../actions/environment.js'
 
 class App extends Component {
@@ -30,7 +29,14 @@ class App extends Component {
     }
     return (
       <div style={style}>
-        {this.props.children}
+        <ReactCSSTransitionGroup component="div"
+                                 transitionName="page"
+                                 transitionEnterTimeout={300}
+                                 transitionLeaveTimeout={300}>
+          {React.cloneElement(this.props.children, {
+            key: this.props.location.pathname
+          })}
+        </ReactCSSTransitionGroup>
         <Scroll2Top showUnder={10} />
       </div>
     )

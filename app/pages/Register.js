@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react'
+import { connect } from 'react-redux'
 
-import {DoneSVG,WeiXinSVG,QQSVG} from '../components/SVG/'
-import {inputStyle} from './style'
+import { DoneSVG,WeiXinSVG,QQSVG } from '../components/SVG/index.js'
 
-import 'isomorphic-fetch'
+import {Toaster} from '../components/index.js'
 
 import {$q} from '../utils/server.js'
 
@@ -45,35 +45,24 @@ export default class Register extends Component {
     const password = this.refs.password.value
 
     if (!email) {
-      console.log('请输入邮箱')
+      this.refs.toaster.show('error','请输入邮箱')
       return
     }else if (!password) {
-      console.log('请输入密码')
+      this.refs.toaster.show('error','请输入密码')
       return
     }else if(password.length < 6){
-      console.log('密码长度过小')
+      this.refs.toaster.show('error','密码长度过小')
       return
     }
-
-    $q('path/register',{"email": email,"password": password}).then(function (data) {
+    const req = {
+      "email": email,
+      "password": password
+    }
+    $q('path/register',req).then(function (data) {
       console.log(data)
     },function (error) {
       console.log(error)
     })
-
-    // fetch('http://localhost:3030/shopping/path/register', {
-    //   method: 'post',
-    //   headers: {
-    //     'Accept': 'application/json',
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify({
-    //     "email": email,
-    //     "password": password
-    //   })
-    // }).then(response => response.json()).then(data => {
-    //   console.log(data)
-    // }).catch(error => console.log(error))
   }
 
   renderRegister() {
@@ -101,6 +90,7 @@ export default class Register extends Component {
   render() {
     return (
       <div className="page-gradient">
+        <Toaster ref="toaster" />
         <div style={cardStyle}
              className="card-shadow">
           <img style={logoStyle} src="../static/logo.png" />
@@ -120,6 +110,7 @@ export default class Register extends Component {
 }
 
 Register.propTypes = {
+  // dispatch: PropTypes.func.isRequired,
   // string: PropTypes.string.isRequired,
   // array: PropTypes.array.isRequired,
   // bool: PropTypes.bool.isRequired,

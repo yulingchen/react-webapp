@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+import { Link } from 'react-router'
 
 import {Avatar,ModalItem,CardItem} from '../components'
 import {QQSVG} from '../components/SVG'
@@ -14,11 +15,13 @@ export default class Main extends Component {
     }
     return (
       <div style={style}>
-        <Avatar dark={true}
-                title="名字还是土一点好"
-                avatar="http://p3.music.126.net/jBUvF-7028ZI3DSaVjb1fA==/7968160767060979.jpg">
-          <b>等级：1 金币：1010</b>
-        </Avatar>
+        <Link to="/register">
+          <Avatar dark={true}
+                  title="名字还是土一点好"
+                  avatar="http://p3.music.126.net/jBUvF-7028ZI3DSaVjb1fA==/7968160767060979.jpg">
+            <b>等级：1 金币：1010</b>
+          </Avatar>
+        </Link>
       </div>
     )
   }
@@ -47,7 +50,7 @@ export default class Main extends Component {
       background: '-webkit-linear-gradient(#00CDD8,#00D6BC)'
     }
     return (
-      <div style={card1}>
+      <div className="button" style={card1}>
         <CardItem title="采撷" description="采撷一下吧">
           开始游戏 >
         </CardItem>
@@ -60,7 +63,7 @@ export default class Main extends Component {
       background: '-webkit-linear-gradient(#FF6FB8,#FF6468)'
     }
     return (
-      <div style={card1}>
+      <div className="button" style={card1}>
         <CardItem title="采撷" description="采撷一下吧">
           开始游戏 >
         </CardItem>
@@ -73,7 +76,7 @@ export default class Main extends Component {
       background: '-webkit-linear-gradient(#C87EED,#A24BE8)'
     }
     return (
-      <div style={card1}>
+      <div className="button" style={card1}>
         <CardItem title="采撷" description="采撷一下吧">
           开始游戏 >
         </CardItem>
@@ -86,7 +89,7 @@ export default class Main extends Component {
       background: '-webkit-linear-gradient(#FBD449,#FFB532)'
     }
     return (
-      <div style={card1}>
+      <div className="button" style={card1}>
         <CardItem title="采撷" description="采撷一下吧">
           开始游戏 >
         </CardItem>

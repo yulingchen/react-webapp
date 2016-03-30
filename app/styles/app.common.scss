@@ -838,12 +838,70 @@ since IE8 won't execute CSS that contains a CSS3 selector.
  * caixie.net
  */
 
+/**
+ * router
+ */
+.page-enter {
+  opacity: 0.01;
+  transition: opacity .5s ease-in;
+}
+
+.page-enter.page-enter-active {
+  opacity: 1;
+}
+
+.page-leave {
+  opacity: 1;
+  transition: opacity .5s ease-in;
+}
+
+.page-leave.page-leave-active {
+  opacity: 0;
+}
+
+/**
+ * button
+ */
+
+button {
+  text-align: center;
+  cursor: pointer;
+  box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
+.button {
+  cursor: pointer;
+}
+
+.button:active{
+  box-shadow: 0 0 0 1px rgba(0,0,0, 0.15) inset, 0 0 6px rgba(0,0,0, 0.20) inset;
+  border-color: #000\9;
+}
+
 .button-full {
   width: 100%;
 }
 
 .button-clear {
   background: none;
+}
+
+/**
+ * input
+ */
+
+input {
+  box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  border: 1px solid $borderColor;
+  font-size: 14px;
+  min-height: $rowHeight;
+  padding: 0px 10px;
 }
 
 .input-clear {
@@ -856,6 +914,10 @@ since IE8 won't execute CSS that contains a CSS3 selector.
   box-shadow: none !important;
   border-bottom: 1px solid #CACED1 !important;
 }
+
+/**
+ * card
+ */
 
 .card-shadow {
   position: relative;
@@ -874,29 +936,10 @@ since IE8 won't execute CSS that contains a CSS3 selector.
   background: -webkit-radial-gradient(center center, cover, #C1CDBF, #708588);
 }
 
-input {
-  box-sizing:border-box;
-  -webkit-box-sizing:border-box;
-  box-shadow: none;
-  -webkit-box-shadow: none;
-  border: 1px solid $borderColor;
-  font-size: 14px;
-  min-height: $rowHeight;
-  padding: 0px 10px;
-}
-
-button {
-  text-align: center;
-  cursor: pointer;
-  box-sizing:border-box;
-  -webkit-box-sizing:border-box;
-  box-shadow: none;
-  -webkit-box-shadow: none;
-}
-
 /**
  * align
  */
+
 .text-center {
   text-align: center;
 }
@@ -904,18 +947,22 @@ button {
 /**
  * box
  */
+
 .center, .right, .left, .middle {
   display: -webkit-box;
   position: relative;
   -webkit-box-align: center;
   -webkit-box-orient: horizontal;
 }
+
 .center {
   -webkit-box-pack: center;
 }
+
 .right {
   -webkit-box-pack: end;
 }
+
 .left {
   -webkit-box-pack: start;
 }
@@ -947,6 +994,7 @@ button {
 /**
  * icon
  */
+
 .ion-left,.ion-right {
   position: relative;
   left: 20px;
@@ -956,9 +1004,11 @@ button {
     font-size: 140%;
   }
 }
+
 /**
  *  row
  */
+
 row {
   height: $rowHeight;
   line-height: $rowHeight;
@@ -967,6 +1017,7 @@ row {
 /**
  * title
  */
+
 .list-title {
   @extend row;
   background: $stable;
@@ -976,6 +1027,7 @@ row {
 /**
  * list
  */
+
 .list-box-sizing {
   display: inline-block;
   margin: 10px;
