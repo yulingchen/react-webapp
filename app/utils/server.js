@@ -1,6 +1,18 @@
 import 'isomorphic-fetch'
 
 export const $q = (api,args) => {
-  return fetch(`http://www.caixie.net/api/${api}.json`)
-    .then(response => response.json())
+  return new Promise(function (resolve, reject) {
+    fetch(`http://localhost:3030/shopping/${api}`, {
+      method: 'post',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(args)
+    }).then(response => response.json()).then(data => {
+      resolve(data)
+    }).catch(error => {
+      reject(error)
+    })
+  })
 }
