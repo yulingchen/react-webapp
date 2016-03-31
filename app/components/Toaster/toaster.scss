@@ -1,15 +1,21 @@
 .Toaster {
-  display: none;
+  visibility: hidden;
   text-align: center;
   position: fixed;
   top: 20px;
   z-index: 99;
-  // opacity: 0;
-  -webkit-transition-delay: 1s;
-  -webkit-transition: -webkit-transform 1s,opacity 1s;
-  transition-property: transform,opacity;
-  transition-duration: 1s,1s;
-  
+  opacity: 0;
+  // -webkit-transition-delay: 1s;
+  // -webkit-transition: -webkit-transform 1s,opacity 1s;
+  // transition-property: transform,opacity;
+  // transition-duration: 1s,1s;
+  transition: opacity .5s ease-out;
+  -webkit-transition: opacity .5s ease-out;
+  &.visibility {
+    opacity: 1;
+    visibility: visible;
+  }
+
   p {
     display: box;
     display: -webkit-box;
@@ -35,9 +41,5 @@
       color: #FFF;
       padding: 0px 5px 0px 10px;
     }
-  }
-  &.block {
-    display: block;
-    // opacity: 1;
   }
 }

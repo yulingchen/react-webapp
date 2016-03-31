@@ -43,15 +43,15 @@ export default class Register extends Component {
     // this.refs.reg.reset()
     const email = this.refs.email.value
     const password = this.refs.password.value
-
+    const {toaster} = this.refs
     if (!email) {
-      this.refs.toaster.show('error','请输入邮箱')
+      toaster.show('error','请输入邮箱')
       return
     }else if (!password) {
-      this.refs.toaster.show('error','请输入密码')
+      toaster.show('error','请输入密码')
       return
     }else if(password.length < 6){
-      this.refs.toaster.show('error','密码长度过小')
+      toaster.show('error','密码长度过小')
       return
     }
     const req = {
