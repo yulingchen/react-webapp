@@ -44,14 +44,14 @@ export default class Main extends Component {
     )
   }
 
-  renderCard1() {
-    const card1 = {
+  renderInviteDinner() {
+    const style = {
       borderRadius: '5px',
       background: '-webkit-linear-gradient(#00CDD8,#00D6BC)'
     }
     return (
-      <div className="button" style={card1}>
-        <CardItem title="采撷" description="采撷一下吧">
+      <div className="button" style={style}>
+        <CardItem title="约饭" description="咱们凑一桌子吧!">
           开始游戏 >
         </CardItem>
       </div>
@@ -106,7 +106,7 @@ export default class Main extends Component {
         <div className="padding">
           {this.renderAvatar()}
           {this.renderUserModal()}
-          {this.renderCard1()}
+          {this.renderInviteDinner()}
           {this.renderCard2()}
           {this.renderCard3()}
           {this.renderCard4()}

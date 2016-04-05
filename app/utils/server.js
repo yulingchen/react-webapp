@@ -2,7 +2,7 @@ import 'isomorphic-fetch'
 
 export const $q = (api,args) => {
   return new Promise(function (resolve, reject) {
-    fetch(`http://localhost:3030/shopping/${api}`, {
+    fetch(`http://localhost:3030/caixie/${api}`, {
       method: 'post',
       headers: {
         'Accept': 'application/json',
