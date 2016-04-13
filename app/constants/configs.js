@@ -1,1 +1,0 @@
-export const BASE_API = 'http://www.caixie.net/static/'
