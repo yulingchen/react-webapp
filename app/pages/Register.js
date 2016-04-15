@@ -59,7 +59,11 @@ export default class Register extends Component {
       "password": password
     }
     $q('path/register',req).then(function (data) {
-      console.log(data)
+      if (data.respHead.respCode === 200) {
+        alert('sucess')
+      } else {
+        toaster.show('error',data.respHead.respDesc)
+      }
     },function (error) {
       console.log(error)
     })
