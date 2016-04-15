@@ -16,7 +16,7 @@ const initialState = {
   width: null
 }
 
-export default function environment(state = initialState, action) {
+export function environment(state = initialState, action) {
   switch (action.type) {
     case CHANGE_IS_MOBILE:
       return {
@@ -33,6 +33,38 @@ export default function environment(state = initialState, action) {
           width: action.width
         }
       }
+    default:
+      return state
+  }
+}
+
+
+/**
+ * WINDOWSTORE
+ *
+ * 存储 : 路由 + 数据流 + window对象
+ * 
+ */
+function pagesMixin(state, payload) {
+  let WINDOWSTORE = state
+  switch (payload.action) {
+    case 'PUSH':
+      if (true) {}
+      return state
+    case 'POP':
+      return state
+    case 'REPLACE':
+      return state
+    default:
+      return state
+  }
+}
+
+export function WINDOWSTORE(state = [], action) {
+  switch (action.type) {
+    case '@@router/LOCATION_CHANGE':
+      // console.log('window.scrollY',window.scrollY)
+      return pagesMixin(state, action.payload)
     default:
       return state
   }

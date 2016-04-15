@@ -17,8 +17,9 @@ class App extends Component {
     dispatch(initEnvironment())
   }
   render() {
+    const right = <button>'right'</button>
     return (
-      <div className={css(styles.root)}>
+      <div>
         <Helmet
           title="微信 WEBAPP"
           titleTemplate="%s - 服务端渲染" />
@@ -38,22 +39,7 @@ const styles = StyleSheet.create({
     maxWidth: 700,
     color: '#000',
     margin: '2rem auto',
-  },
-  title: {
-    color: '#000',
-    maxWidth: 300,
-    fontSize: 56,
-  },
-  footer: {
-    margin: '4rem auto',
-    textAlign: 'center',
-    color: '#b7b7b7',
-  },
-  footerLink: {
-    display: 'inline-block',
-    color: '#000',
-    textDecoration: 'none',
-  },
+  }
 })
 
 function mapStateToProps(state) {

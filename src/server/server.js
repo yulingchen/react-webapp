@@ -26,7 +26,7 @@ import reducer from '../createReducer';
 import createRoutes from '../routes/root';
 
 const isDeveloping = process.env.NODE_ENV == 'development';
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 18080;
 const server = global.server = express();
 
 // Security
@@ -54,7 +54,7 @@ server.use(cookieParser());
 server.use(compression());
 
 // API
-server.use('/api/v0/posts', require('./api/posts'));
+server.use('/api/articles', require('./api/articles'));
 server.use('/api/v0/post', require('./api/post'));
 
 // Stub for assets, in case running in dev mode.
@@ -83,10 +83,10 @@ if (isDeveloping) {
     log: console.log,
   }));
 } else {
-  const buildPath = require('../../webpack.client.prod').output.path;
+  // const buildPath = require('../../webpack.client.prod').output.path;
   assets = require('../../assets.json');
   server.use(morgan('combined'));
-  server.use('/build/static', express.static(buildPath));
+  server.use('/build/static', express.static('./build/static'));
 }
 
 // Render Document (include global styles)
@@ -134,7 +134,7 @@ const renderFullPage = (data, initialState, assets) => {
            body {
            	font-size: 1rem;
             background-color: #fff;
-           	color: #555;
+           	color: #000;
            	-webkit-font-smoothing: antialiased;
              -moz-osx-font-smoothing: grayscale;
            	font-family: -apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -215,6 +215,7 @@ const renderFullPage = (data, initialState, assets) => {
 
            img {
            	vertical-align: middle;
+            width: 100%;
            }
 
            [role="button"] {
@@ -295,7 +296,17 @@ const renderFullPage = (data, initialState, assets) => {
            a,a:visited {
              text-decoration: none;
            }
+
+            .button {
+              cursor: pointer;
+            }
+
+            .button:active{
+              box-shadow: 0 0 0 1px rgba(0,0,0, 0.15) inset, 0 0 6px rgba(0,0,0, 0.20) inset;
+              border-color: #000\9;
+            }
          </style>
+         <link rel="stylesheet" href="//cdn.jsdelivr.net/flexboxgrid/6.3.0/flexboxgrid.min.css" type="text/css" >
          <style data-aphrodite>${data.css.content}</style>
       </head>
       <body>

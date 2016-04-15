@@ -5,7 +5,7 @@ import { Type } from '../style';
 
 const NotFound = () =>
   <div>
-    <Helmet title="Not Found" />
+    <Helmet title="404" />
 
     <h1>Page Not Found!</h1>
   </div>;

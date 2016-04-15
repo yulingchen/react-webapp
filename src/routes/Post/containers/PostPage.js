@@ -22,6 +22,23 @@ const PostPage = ({ title, content, isLoading, error }) => {
   if (!error) {
     return (
       <div>
+      <div className="row between-xs middle-xs">
+        <div className="col-xs-2">
+          <div className="box">
+            xxxxx
+          </div>
+        </div>
+        <div className="col-xs-4">
+          <div className="box">
+            aaaaa
+          </div>
+        </div>
+        <div className="col-xs-2">
+          <div className="box">
+            ssss
+          </div>
+        </div>
+      </div>
         <Helmet
           title={ title }
         />

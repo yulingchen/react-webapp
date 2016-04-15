@@ -1,15 +1,15 @@
-import { createStore, applyMiddleware, compose } from 'redux';
-import thunk from 'redux-thunk';
-import createLogger from 'redux-logger';
-import { callAPIMiddleware } from './middleware/callAPIMiddleware';
-import createReducer from './createReducer';
+import { createStore, applyMiddleware, compose } from 'redux'
+import thunk from 'redux-thunk'
+import createLogger from 'redux-logger'
+import { callAPIMiddleware } from './middleware/callAPIMiddleware'
+import createReducer from './createReducer'
 
 export function configureStore(initialState = {}) {
   let store = createStore(createReducer(), initialState, compose(
     applyMiddleware(
       thunk,
-      createLogger(),
-      callAPIMiddleware
+      callAPIMiddleware,
+      createLogger()
     ),
 
      (process.env.NODE_ENV === 'development') &&
@@ -24,14 +24,14 @@ export function configureStore(initialState = {}) {
     if (module.hot) {
       module.hot.accept('./createReducer', () =>
         store.replaceReducer(require('./createReducer').default)
-      );
+      )
     }
   }
 
-  return store;
+  return store
 }
 
 export function injectAsyncReducer(store, name, asyncReducer) {
-  store.asyncReducers[name] = asyncReducer;
-  store.replaceReducer(createReducer(store.asyncReducers));
+  store.asyncReducers[name] = asyncReducer
+  store.replaceReducer(createReducer(store.asyncReducers))
 }

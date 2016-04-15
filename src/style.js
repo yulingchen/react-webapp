@@ -1,14 +1,17 @@
 // Define global style vars here
 
-const sans = '\"Helvetica Neue\", sans-serif';
-const serif = 'Georgia, serif';
-const blue = '#0070ff';
-
-export const Type = {
-  sans,
-  serif,
-};
+const bg = '#FFFAF7'
+const bar = '#FFFFFF'
+const line = '#D8D8D8'
+const name = '#59A3CE'
+const note = '#AEAEAE'
+const theme = '#578A8D'
 
 export const Color = {
-  blue,
-};
+  bg,
+  bar,
+  line,
+  name,
+  note,
+  theme,
+}

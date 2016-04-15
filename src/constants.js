@@ -1,10 +1,18 @@
 /**
  * ====================
- * environment
+ * environment 所属环境
  * ====================
  */
 export const CHANGE_IS_MOBILE = 'CHANGE_IS_MOBILE'
 export const CHANGE_WIDTH_AND_HEIGHT = 'CHANGE_WIDTH_AND_HEIGHT'
+
+/**
+ * ====================
+ * pagesInitialState 页面存储
+ * ====================
+ */
+export const PAGES_INITSTATE = 'PAGES_INITSTATE'
+
 
 // Posts
 export const LOAD_POSTS_REQUEST = 'LOAD_POSTS_REQUEST';
