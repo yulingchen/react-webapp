@@ -8,36 +8,39 @@ import { loadArticles } from './actions'
 import { Color } from '../../style'
 import { QQSVG } from '../../components/SVG'
 import ArticleWrap from '../../components/ArticleWrap'
+import Scroll from '../../components/Scroll'
 
 const redial = {
-  fetch: ({ dispatch }) => dispatch(loadArticles())
+  fetch: ({ dispatch, getState }) => {
+    const articles = getState().articles
+    if (articles.data.currentPage === null) {
+      return dispatch(loadArticles(1))
+    }
+  }
 }
 
-// const redial = {
-//   fetch: ({ dispatch, getState}) => {
-//     const articles = getState().articles
-//     const allPages = articles.data.allPages
-//     const currentPage = articles.data.currentPage
-//                       ? articles.data.currentPage + 1
-//                       : 1
-//     if (currentPage <= allPages || allPages === null) {
-//       return dispatch(loadArticles(currentPage))
-//     }
-//   }
-// }
-
 const mapStateToProps = (state) => ({
-  articles: state.articles.data,
+  articles: state.articles.data.articles,
+  allPages: state.articles.data.allPages,
+  currentPage: state.articles.data.currentPage,
+  isLoading: state.articles.isLoading
 })
 
 class Index extends Component {
   constructor(props) {
     super(props)
+    this.getMoreData = this.getMoreData.bind(this)
   }
   renderArticleWrap(props) {
     return props.map((item, key) => {
       return <ArticleWrap key={key} data={item} />
     })
+  }
+  getMoreData(){
+    const { allPages, currentPage } = this.props
+    if (currentPage < allPages) {
+      this.props.dispatch(loadArticles(currentPage + 1))
+    }
   }
   renderPathBar() {
     return (
@@ -52,18 +55,19 @@ class Index extends Component {
     )
   }
   render() {
-    const articles = this.props.articles.articles
+    const { articles, isLoading } = this.props
     return (
-      <div className={css(styles.index)}>
-        {this.renderArticleWrap(articles)}
-        {this.renderPathBar()}
-      </div>
+      <Scroll infinite={this.getMoreData} isLoading={isLoading} >
+        <div className={css(styles.index)}>
+          {this.renderArticleWrap(articles)}
+        </div>
+      </Scroll>
     )
   }
 }
 
 Index.propTypes = {
-  articles: PropTypes.object.isRequired
+  articles: PropTypes.array.isRequired
 }
 
 const styles = StyleSheet.create({
@@ -75,7 +79,6 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '3rem',
     bottom: 0,
-    left: 0,
     background: Color.theme,
     color: '#FFF',
     fontSize: '120%'

@@ -22,7 +22,13 @@ export default function articles(state = {
       return update(state, {
         data: {
           articles: {
-            $set: action.body.contentlist
+            $push: action.body.contentlist
+          },
+          allPages: {
+            $set: action.body.allPages
+          },
+          currentPage: {
+            $set: action.body.currentPage
           }
         },
         lastFetched: { $set: action.lastFetched },

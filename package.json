@@ -60,6 +60,7 @@
     "redux-thunk": "^1.0.3",
     "request": "^2.71.0",
     "superagent": "^1.7.2",
+    "tween-functions": "^1.2.0",
     "webpack": "^1.12.13",
     "webpack-dev-middleware": "^1.5.1",
     "webpack-hot-middleware": "^2.7.1"

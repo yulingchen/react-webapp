@@ -5,6 +5,8 @@ import { StyleSheet, css } from 'aphrodite'
 import { connect } from 'react-redux'
 import { initEnvironment } from '../actions.js'
 
+import ScrollUp from '../../../components/ScrollUp'
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -24,6 +26,7 @@ class App extends Component {
           title="微信 WEBAPP"
           titleTemplate="%s - 服务端渲染" />
         {this.props.children}
+        <ScrollUp showUnder={500} />
       </div>
     )
   }

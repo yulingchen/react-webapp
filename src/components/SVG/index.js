@@ -1,10 +1,30 @@
 "use strict";
 
-export const ArrowLeftSVG = require('./ArrowLeftSVG')
-export const ArrowRightSVG = require('./ArrowRightSVG')
-export const CancelSVG = require('./CancelSVG')
-export const DoneSVG = require('./DoneSVG')
-export const ErrorSVG = require('./ErrorSVG')
-export const WeiXinSVG = require('./WeiXinSVG')
-export const WeiXinOutSVG = require('./WeiXinOutSVG')
-export const QQSVG = require('./QQSVG')
+import React, { Component, PropTypes } from 'react'
+
+class SVG extends Component {
+  constructor(props) {
+    super(props)
+  }
+  render() {
+    const name = this.props.name
+    const size = this.props.size || 32
+    const color = this.props.color || '#000'
+    return (
+      <svg width={size} height={size} viewBox="0 0 1024 1024">
+        <path fill={color} d={require(`./${name}`)} ></path>
+      </svg>
+    )
+  }
+}
+
+SVG.propTypes = {
+  name: React.PropTypes.oneOf([
+      'ChevronUp','ChevronDown','ChevronRight','ChevronDown',
+      'ChevronUpCircle','ChevronDownCircle','ChevronRightCircle','ChevronDownCircle',
+    ]),
+  color: PropTypes.string,
+  size: PropTypes.number
+}
+
+module.exports = SVG

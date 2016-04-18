@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { StyleSheet, css } from 'aphrodite'
 
-import { ArrowLeftSVG } from './SVG'
 import { Color } from '../style'
 
 export default class AppBar extends Component {
@@ -20,7 +19,7 @@ export default class AppBar extends Component {
   renderAppBarLeft() {
     const { left } = this.props
     if (!left) {
-      return <div onClick={this.defaultGoBack}><ArrowLeftSVG /></div>
+      return <div onClick={this.defaultGoBack}>back</div>
     }
     return left
   }

@@ -6,7 +6,8 @@ import {
 
 import http from '../../utils/HttpClient';
 
-export function loadArticles() {
+export function loadArticles(currentPage) {
+  console.log('currentPage==========>',currentPage)
   return {
     // Types of actions to emit before and after
     types: [LOAD_POSTS_REQUEST, LOAD_POSTS_SUCCESS, LOAD_POSTS_FAILURE],
@@ -15,9 +16,9 @@ export function loadArticles() {
     // shouldCallAPI: (state) => state.posts.data.length === 0 && !state.posts.isLoading,
 
     // Perform the fetching:
-    callAPI: () => http.get('/api/articles'),
+    callAPI: () => http.post('/api/articles', { currentPage: currentPage }),
 
     // Arguments to inject in begin/end actions
-    payload: {},
+    payload: { currentPage: currentPage },
   }
 }

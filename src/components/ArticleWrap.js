@@ -8,10 +8,10 @@ const ArticleWrap = ({ data }) =>
       <div className={css(styles.lfItem)}>
         <img className={css(styles.img)} src="" />
         <span className={css(styles.name)}>{data.source}</span>
-        <span className={css(styles.note)}>{data.pubDate}</span>
+        <span className={css(styles.note)}>{(data.pubDate).split(" ")[0]}</span>
       </div>
       <div className={css(styles.lfItem)}>
-        <h3>{data.title}</h3>
+        <h3>{(data.title).substr(0,25)}</h3>
       </div>
       <div className={css(styles.lfItem)}>
         <span className={css(styles.tnk)}>{data.channelName}</span>
