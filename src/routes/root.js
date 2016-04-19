@@ -7,9 +7,9 @@ export default function createRoutes(store) {
     path: '/',
     getComponents(location, cb) {
       require.ensure([
-          './App/components/App',
+          './App/App',
         ], (require) => {
-          let AppPage = require('./App/components/App').default
+          let AppPage = require('./App/App').default
           cb(null, AppPage)
         })
     },
@@ -18,8 +18,7 @@ export default function createRoutes(store) {
         cb(null, [
 
           // other pages
-          require('./About').default, // no need to modify store, no reducer
-          require('./Post').default(store), // add async reducer
+          // require('./Article').default(store),
 
           // 404
           require('./NotFound').default

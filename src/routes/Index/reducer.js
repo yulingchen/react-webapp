@@ -37,6 +37,7 @@ export default function articles(state = {
     case types.LOAD_POSTS_FAILURE:
       return update(state, {
         error: { $set: action.error },
+        isLoading: { $set: false }
       });
     default:
       return state;

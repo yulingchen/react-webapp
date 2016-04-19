@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { StyleSheet, css } from 'aphrodite'
 
-import Loading from './Loading'
+import { Color } from '../style'
 
 class Scroll extends Component {
   
@@ -18,8 +18,10 @@ class Scroll extends Component {
     window.removeEventListener('scroll', this.handleScroll)
   }
 
-  handleScroll() {
-    if (this.getScrollTop() + this.getWindowHeight() == this.getScrollHeight()) {
+  handleScroll(e) {
+    e.preventDefault()
+    if (this.getScrollTop() + this.getWindowHeight() === this.getScrollHeight() && !this.props.isLoading) {
+      console.log('tootototootototootoo')
       this.props.infinite()
     }
   }
@@ -69,13 +71,20 @@ class Scroll extends Component {
 
   render() {
     const isLoading = this.props.isLoading || false
+    const { error } = this.props
     return (
       <div>
         {this.props.children}
         {
           isLoading && 
           <div className={css(styles.loading)}>
-            <Loading />
+            ...
+          </div>
+        }
+        {
+          error &&
+          <div className={css(styles.loading)}>
+            error
           </div>
         }
       </div>
@@ -86,12 +95,14 @@ class Scroll extends Component {
 Scroll.propTypes = {
   refresh: PropTypes.func,
   infinite: PropTypes.func,
-  isLoading: PropTypes.bool
+  isLoading: PropTypes.bool.isRequired,
+  error: PropTypes.string
 }
 
 const styles = StyleSheet.create({
   loading: {
-    background: "#ccc"
+    textAlign: 'center',
+    padding: '.5rem 0'
   }
 })
 

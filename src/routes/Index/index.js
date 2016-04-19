@@ -2,18 +2,19 @@ import React, { PropTypes, Component } from 'react'
 import { StyleSheet, css } from 'aphrodite'
 import { provideHooks } from 'redial'
 import { connect } from 'react-redux'
+import { Link } from 'react-router'
 
 import { loadArticles } from './actions'
-
 import { Color } from '../../style'
-import { QQSVG } from '../../components/SVG'
-import ArticleWrap from '../../components/ArticleWrap'
 import Scroll from '../../components/Scroll'
+import ArticleListItem from './ArticleListItem'
 
 const redial = {
   fetch: ({ dispatch, getState }) => {
+    console.log('getState()getState()getState()',getState())
     const articles = getState().articles
     if (articles.data.currentPage === null) {
+      console.log('to do this')
       return dispatch(loadArticles(1))
     }
   }
@@ -32,36 +33,28 @@ class Index extends Component {
     this.getMoreData = this.getMoreData.bind(this)
   }
   getMoreData(){
+    console.log('getMoreData====>')
     const { allPages, currentPage } = this.props
     if (currentPage < allPages) {
       this.props.dispatch(loadArticles(currentPage + 1))
     }
   }
   renderArticleWrap(props) {
-    return props.map((item, key) =>
-      <ArticleWrap key={key} data={item} />
-    )
-  }
-  renderPathBar() {
     return (
-      <div className={`row middle-xs center-xs ${css(styles.pathBar)}`}>
-        <div className={`col-xs ${css(styles.pathBarL)}`}>
-          <div className="box">登录</div>
-        </div>
-        <div className="col-xs">
-          <div className="box">注册</div>
-        </div>
+      <div className={css(styles.articles)}>
+        {
+          props.map((item, key) =>
+            <ArticleListItem key={key} data={item} />
+        )}
       </div>
     )
   }
 
   render() {
-    const { articles, isLoading } = this.props
+    const { articles, isLoading, error } = this.props
     return (
-      <Scroll infinite={this.getMoreData} isLoading={isLoading} >
-        <div className={css(styles.index)}>
-          {this.renderArticleWrap(articles)}
-        </div>
+      <Scroll infinite={this.getMoreData} isLoading={isLoading} error={error}>
+        {this.renderArticleWrap(articles)}
       </Scroll>
     )
   }
@@ -72,20 +65,8 @@ Index.propTypes = {
 }
 
 const styles = StyleSheet.create({
-  index: {
-    paddingBottom: '3rem'
-  },
-  pathBar: {
-    position: 'fixed',
-    width: '100%',
-    height: '3rem',
-    bottom: 0,
-    background: Color.theme,
-    color: '#FFF',
-    fontSize: '120%'
-  },
-  pathBarL: {
-    borderRight: '1px solid #FFF'
+  articles: {
+    padding: '0 .5rem'
   }
 })
 

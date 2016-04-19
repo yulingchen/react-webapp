@@ -39,6 +39,7 @@
     "eslint-plugin-react": "3.16.1",
     "express": "^4.13.4",
     "fbjs": "^0.7.2",
+    "halogen": "^0.2.0",
     "helmet": "^1.1.0",
     "history": "^1.17.0",
     "hpp": "^0.2.0",

@@ -3,9 +3,9 @@ import Helmet from 'react-helmet'
 import { StyleSheet, css } from 'aphrodite'
 
 import { connect } from 'react-redux'
-import { initEnvironment } from '../actions.js'
+import { initEnvironment } from './actions.js'
 
-import ScrollUp from '../../../components/ScrollUp'
+import ScrollUp from '../../components/ScrollUp'
 
 class App extends Component {
   constructor(props) {

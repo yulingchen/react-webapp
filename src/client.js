@@ -16,7 +16,7 @@ const initialState = window.INITIAL_STATE || {};
 
 // Set up Redux (note: this API requires redux@>=3.1.0):
 const store = configureStore(initialState);
-const { dispatch } = store;
+const { dispatch, getState } = store;
 const { pathname, search, hash } = window.location;
 const location = `${pathname}${search}${hash}`;
 const container = document.getElementById('root');
@@ -60,6 +60,7 @@ let render = () => {
 
           // Allow lifecycle hooks to dispatch Redux actions:
           dispatch,
+          getState
         };
 
       // Don't fetch data for initial route, server has already done the work:

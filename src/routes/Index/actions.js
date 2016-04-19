@@ -7,7 +7,9 @@ import {
 import http from '../../utils/HttpClient';
 
 export function loadArticles(currentPage) {
-  console.log('currentPage==========>',currentPage)
+  const params = {
+    page: currentPage
+  }
   return {
     // Types of actions to emit before and after
     types: [LOAD_POSTS_REQUEST, LOAD_POSTS_SUCCESS, LOAD_POSTS_FAILURE],
@@ -16,7 +18,7 @@ export function loadArticles(currentPage) {
     // shouldCallAPI: (state) => state.posts.data.length === 0 && !state.posts.isLoading,
 
     // Perform the fetching:
-    callAPI: () => http.post('/api/articles', { currentPage: currentPage }),
+    callAPI: () => http.post('/api/articles', { params: params }),
 
     // Arguments to inject in begin/end actions
     payload: { currentPage: currentPage },

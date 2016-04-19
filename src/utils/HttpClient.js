@@ -38,7 +38,6 @@ const HttpClient = {
       });
   }),
   post: (path, payload) => new Promise((resolve, reject) => {
-    console.log('payloadpayloadpayloadpayload',payload)
     request
       .post(getUrl(path))
       .send(payload)

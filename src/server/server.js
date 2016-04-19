@@ -200,7 +200,13 @@ const renderFullPage = (data, initialState, assets) => {
            a:focus {
            	text-decoration: none;
            }
-
+           a,
+           a:link,
+           a:visited,
+           a:hover,
+           a:active {
+            color: inherit
+           }
 
            /* Code */
            pre {
@@ -295,17 +301,8 @@ const renderFullPage = (data, initialState, assets) => {
            a,a:visited {
              text-decoration: none;
            }
-          .button {
-            cursor: pointer;
-          }
-
-          .button:active{
-            box-shadow: 0 0 0 1px rgba(0,0,0, 0.15) inset, 0 0 6px rgba(0,0,0, 0.20) inset;
-            border-color: #000\9;
-          }
          </style>
          <link rel="stylesheet" href="//cdn.jsdelivr.net/flexboxgrid/6.3.0/flexboxgrid.min.css" type="text/css" >
-         <link rel="stylesheet" type="text/css" href="./app.css">
          <style data-aphrodite>${data.css.content}</style>
       </head>
       <body>
@@ -345,7 +342,7 @@ server.get('*', (req, res) => {
 
      // Allow lifecycle hooks to dispatch Redux actions:
      dispatch,
-     getState,
+     getState
    };
 
     // Wait for async data fetching to complete, then render:
