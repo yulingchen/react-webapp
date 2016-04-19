@@ -31,16 +31,16 @@ class Index extends Component {
     super(props)
     this.getMoreData = this.getMoreData.bind(this)
   }
-  renderArticleWrap(props) {
-    return props.map((item, key) => {
-      return <ArticleWrap key={key} data={item} />
-    })
-  }
   getMoreData(){
     const { allPages, currentPage } = this.props
     if (currentPage < allPages) {
       this.props.dispatch(loadArticles(currentPage + 1))
     }
+  }
+  renderArticleWrap(props) {
+    return props.map((item, key) =>
+      <ArticleWrap key={key} data={item} />
+    )
   }
   renderPathBar() {
     return (
@@ -54,6 +54,7 @@ class Index extends Component {
       </div>
     )
   }
+
   render() {
     const { articles, isLoading } = this.props
     return (

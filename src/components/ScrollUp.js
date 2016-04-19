@@ -1,6 +1,8 @@
 /**
  * @author  Milos Janda
  * @licence MIT
+ *
+ * @fix by luckcoding
  */
 
 'use strict';
@@ -80,15 +82,16 @@ var ScrollUp = React.createClass({
     },
 
     handleScroll: function () {
-        if (window.scrollY > this.props.showUnder) {
+        if (this.getScrollTop() > this.props.showUnder) {
             this.setState({show: true});
         } else {
             this.setState({show: false});
         }
     },
     handleClick: function () {
+        
         this.stopScrolling();
-        this.data.startValue = window.scrollY;
+        this.data.startValue = this.getScrollTop();
         this.data.currentTime = 0;
         this.data.startTime = null;
         this.data.rafId = window.requestAnimationFrame(this.scrollStep);
@@ -108,10 +111,10 @@ var ScrollUp = React.createClass({
             this.props.duration
         );
 
-        if (window.scrollY <= this.props.topPosition) {
+        if (this.getScrollTop() <= this.props.topPosition) {
             this.stopScrolling();
         } else {
-            window.scrollTo(window.scrollY, position);
+            window.scrollTo(this.getScrollTop(), position);
             this.data.rafId = window.requestAnimationFrame(this.scrollStep);
         }
     },
@@ -119,7 +122,20 @@ var ScrollUp = React.createClass({
     stopScrolling: function () {
         window.cancelAnimationFrame(this.data.rafId);
     },
-
+    /**
+    * 滚动条在Y轴上的滚动距离
+    */
+    getScrollTop: function() {
+        var scrollTop = 0, bodyScrollTop = 0, documentScrollTop = 0
+        if (document.body) {
+            bodyScrollTop = document.body.scrollTop
+        }
+        if (document.documentElement) {
+            documentScrollTop = document.documentElement.scrollTop
+        }
+        scrollTop = (bodyScrollTop - documentScrollTop > 0) ? bodyScrollTop : documentScrollTop
+        return scrollTop
+    },
     render: function () {
         var propStyle = this.props.style;
         var element =

@@ -59,6 +59,7 @@
     "redux-mock-store": "0.0.6",
     "redux-thunk": "^1.0.3",
     "request": "^2.71.0",
+    "source-map-support": "^0.4.0",
     "superagent": "^1.7.2",
     "tween-functions": "^1.2.0",
     "webpack": "^1.12.13",

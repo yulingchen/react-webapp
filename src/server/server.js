@@ -83,7 +83,6 @@ if (isDeveloping) {
     log: console.log,
   }));
 } else {
-  // const buildPath = require('../../webpack.client.prod').output.path;
   assets = require('../../assets.json');
   server.use(morgan('combined'));
   server.use('/build/static', express.static('./build/static'));
@@ -296,18 +295,17 @@ const renderFullPage = (data, initialState, assets) => {
            a,a:visited {
              text-decoration: none;
            }
-         </style>
-         <style>
-.button {
-  cursor: pointer;
-}
+          .button {
+            cursor: pointer;
+          }
 
-.button:active{
-  box-shadow: 0 0 0 1px rgba(0,0,0, 0.15) inset, 0 0 6px rgba(0,0,0, 0.20) inset;
-  border-color: #000\9;
-}
+          .button:active{
+            box-shadow: 0 0 0 1px rgba(0,0,0, 0.15) inset, 0 0 6px rgba(0,0,0, 0.20) inset;
+            border-color: #000\9;
+          }
          </style>
          <link rel="stylesheet" href="//cdn.jsdelivr.net/flexboxgrid/6.3.0/flexboxgrid.min.css" type="text/css" >
+         <link rel="stylesheet" type="text/css" href="./app.css">
          <style data-aphrodite>${data.css.content}</style>
       </head>
       <body>
@@ -327,6 +325,7 @@ server.get('*', (req, res) => {
   const routes = createRoutes(store);
   const history = createMemoryHistory(req.path);
   const { dispatch, getState } = store;
+
   match({ routes, history }, (err, redirectLocation, renderProps) => {
     if (err) {
       console.error(err);
@@ -349,6 +348,7 @@ server.get('*', (req, res) => {
      getState,
    };
 
+    // Wait for async data fetching to complete, then render:
     trigger('fetch', components, locals)
       .then(() => {
         const initialState = store.getState();

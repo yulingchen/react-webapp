@@ -19,7 +19,7 @@ class SVG extends Component {
 }
 
 SVG.propTypes = {
-  name: React.PropTypes.oneOf([
+  name: PropTypes.oneOf([
       'ChevronUp','ChevronDown','ChevronRight','ChevronDown',
       'ChevronUpCircle','ChevronDownCircle','ChevronRightCircle','ChevronDownCircle',
     ]),

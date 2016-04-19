@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import { StyleSheet, css } from 'aphrodite'
 
+import Loading from './Loading'
+
 class Scroll extends Component {
   
   constructor(props) {
@@ -73,7 +75,7 @@ class Scroll extends Component {
         {
           isLoading && 
           <div className={css(styles.loading)}>
-            ...
+            <Loading />
           </div>
         }
       </div>
