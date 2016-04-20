@@ -5,16 +5,15 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router'
 
 import { loadArticles } from './actions'
+import { mixinArticle } from '../Article/actions'
 import { Color } from '../../style'
 import Scroll from '../../components/Scroll'
 import ArticleListItem from './ArticleListItem'
 
 const redial = {
   fetch: ({ dispatch, getState }) => {
-    console.log('getState()getState()getState()',getState())
     const articles = getState().articles
     if (articles.data.currentPage === null) {
-      console.log('to do this')
       return dispatch(loadArticles(1))
     }
   }
@@ -33,18 +32,22 @@ class Index extends Component {
     this.getMoreData = this.getMoreData.bind(this)
   }
   getMoreData(){
-    console.log('getMoreData====>')
     const { allPages, currentPage } = this.props
     if (currentPage < allPages) {
       this.props.dispatch(loadArticles(currentPage + 1))
     }
+  }
+  dispatchArticle(props) {
+    this.props.dispatch(mixinArticle(props))
   }
   renderArticleWrap(props) {
     return (
       <div className={css(styles.articles)}>
         {
           props.map((item, key) =>
-            <ArticleListItem key={key} data={item} />
+            <ArticleListItem key={key}
+                             data={item}
+                             onClick={this.dispatchArticle.bind(this, item)} />
         )}
       </div>
     )

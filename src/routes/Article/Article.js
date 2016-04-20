@@ -1,19 +1,29 @@
-import React, { PropTypes } from 'react'
+import React, { PropTypes, Component } from 'react'
 import { connect } from 'react-redux'
+import { provideHooks } from 'redial'
 import { StyleSheet, css } from 'aphrodite'
 import Helmet from 'react-helmet'
 
-// const mapStateToProps = state => ({
-//   currentArticle: state.currentArticle.data
-// })
+import { loadPost } from './actions'
 
-const Article = ({ data }) =>
-  <div>
-    Article
-  </div>
+const redial = {
+  fetch: ({ dispatch, params: { aid } }) => dispatch(loadPost(aid)),
+}
+
+const mapStateToProps = state => ({
+  article: state.currentPost.article,
+  isLoading: state.currentPost.isLoading,
+  error: state.currentPost.error
+})
+
+const Article = ({ article, isLoading, error }) => {
+  return <div><span>article</span></div>
+}
 
 Article.propTypes = {
-  data: PropTypes.object
+  article: PropTypes.object,
+  isLoading: PropTypes.bool,
+  error: PropTypes.object
 }
 
 const styles = StyleSheet.create({
@@ -24,8 +34,5 @@ const styles = StyleSheet.create({
   }
 })
 
-export default Article
 
-// export default connect(
-//   mapStateToProps
-// )(Article)
+export default provideHooks(redial)(connect(mapStateToProps)(Article))

@@ -78,7 +78,7 @@ class Scroll extends Component {
         {
           isLoading && 
           <div className={css(styles.loading)}>
-            ...
+            <div className={css(styles.sp, styles.spCircle)}></div>
           </div>
         }
         {
@@ -103,6 +103,19 @@ const styles = StyleSheet.create({
   loading: {
     textAlign: 'center',
     padding: '.5rem 0'
+  },
+  sp: {
+    width: '32px',
+    height: '32px',
+    clear: 'both',
+    margin: '20px auto',
+  },
+  spCircle: {
+    border: '4px rgba(0, 0, 0, 0.25) solid',
+    borderTop: `4px ${Color.theme} solid`,
+    borderRadius: '50%',
+    WebkitAnimation: 'spCircRot .6s infinite linear',
+    animation: 'spCircRot .6s infinite linear',
   }
 })
 

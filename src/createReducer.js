@@ -5,8 +5,6 @@ import { environment, WINDOWSTORE } from './routes/App/reducer'
 
 import articles from './routes/Index/reducer'
 
-import posts from './routes/PostList/reducer'
-
 // Only combine reducers needed for initial render, others will be
 // added async
 export default function createReducer(asyncReducers) {
@@ -15,9 +13,8 @@ export default function createReducer(asyncReducers) {
     environment,
     WINDOWSTORE,
 
-    posts,
     articles,
-    
+
     ...asyncReducers,
   })
 }

@@ -3,15 +3,15 @@ import { injectAsyncReducer } from '../../store';
 
 export default function createRoutes(store) {
   return {
-    path: 'currentArticle/:aid',
+    path: 'article/:aid',
     getComponents(location, cb) {
       require.ensure([
           './Article',
           './reducer',
         ], (require) => {
           let Article = require('./Article').default;
-          // let currentArticle = require('./reducer').currentArticle;
-          // injectAsyncReducer(store, 'currentArticle', currentArticle);
+          let currentArticle = require('./reducer').default;
+          injectAsyncReducer(store, 'currentArticle', currentArticle);
           cb(null, Article);
         })
     }

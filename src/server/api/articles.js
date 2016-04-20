@@ -23,7 +23,6 @@ router.post('/', (req, res) => {
      */
     form: req.body.params
   }
-  console.log('req.body.params======>',req.body.params)
   request(options,function (err,resp) {
     const data = JSON.parse(resp.body)
     if (data.showapi_res_code === 0) {

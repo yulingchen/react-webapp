@@ -18,7 +18,7 @@ export default function createRoutes(store) {
         cb(null, [
 
           // other pages
-          // require('./Article').default(store),
+          require('./Post').default(store),
 
           // 404
           require('./NotFound').default

@@ -6,7 +6,7 @@ import ArticleWrap from '../../components/ArticleWrap'
 
 const ArticleListItem = ({ data }) =>
   <Link className={css(styles.link)}
-        to={`/currentArticle/${data.nid}`}>
+        to={`/post/cloth-talk-part-i`}>
     <ArticleWrap data={data} />
   </Link>
 

@@ -55,6 +55,7 @@ server.use(compression());
 
 // API
 server.use('/api/articles', require('./api/articles'));
+server.use('/api/article', require('./api/article'));
 server.use('/api/v0/post', require('./api/post'));
 
 // Stub for assets, in case running in dev mode.
@@ -301,6 +302,23 @@ const renderFullPage = (data, initialState, assets) => {
            a,a:visited {
              text-decoration: none;
            }
+
+@-webkit-keyframes spCircRot {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(359deg);
+  }
+}
+@keyframes spCircRot {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
          </style>
          <link rel="stylesheet" href="//cdn.jsdelivr.net/flexboxgrid/6.3.0/flexboxgrid.min.css" type="text/css" >
          <style data-aphrodite>${data.css.content}</style>
