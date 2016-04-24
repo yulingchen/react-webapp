@@ -1,12 +1,14 @@
 import path from 'path';
 import express from 'express';
+
 import webpack from 'webpack';
 import webpackMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import config from '../../webpack.client.dev';
-import cookieParser from 'cookie-parser';
+
+// import cookieParser from 'cookie-parser';
 import helmet from 'helmet';
-import hpp from 'hpp';
+// import hpp from 'hpp';
 import bodyParser from 'body-parser';
 import morgan from 'morgan';
 import compression from 'compression';
@@ -34,7 +36,7 @@ server.disable('x-powered-by');
 server.set('port', port);
 server.use(bodyParser.urlencoded({ extended: false }));
 server.use(bodyParser.json());
-server.use(hpp());
+// server.use(hpp());
 server.use(helmet.contentSecurityPolicy({
   defaultSrc: ["'self'"],
   scriptSrc: ["'self'"],
@@ -50,7 +52,7 @@ server.use(helmet.xssFilter());
 server.use(helmet.frameguard('deny'));
 server.use(helmet.ieNoOpen());
 server.use(helmet.noSniff());
-server.use(cookieParser());
+// server.use(cookieParser());
 server.use(compression());
 
 // API
@@ -303,22 +305,22 @@ const renderFullPage = (data, initialState, assets) => {
              text-decoration: none;
            }
 
-@-webkit-keyframes spCircRot {
-  from {
-    -webkit-transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(359deg);
-  }
-}
-@keyframes spCircRot {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(359deg);
-  }
-}
+          @-webkit-keyframes spCircRot {
+            from {
+              -webkit-transform: rotate(0deg);
+            }
+            to {
+              -webkit-transform: rotate(359deg);
+            }
+          }
+          @keyframes spCircRot {
+            from {
+              transform: rotate(0deg);
+            }
+            to {
+              transform: rotate(359deg);
+            }
+          }
          </style>
          <link rel="stylesheet" href="//cdn.jsdelivr.net/flexboxgrid/6.3.0/flexboxgrid.min.css" type="text/css" >
          <style data-aphrodite>${data.css.content}</style>

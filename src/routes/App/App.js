@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react'
 import Helmet from 'react-helmet'
 import { StyleSheet, css } from 'aphrodite'
 
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
+
 import { connect } from 'react-redux'
 import { initEnvironment } from './actions.js'
 
