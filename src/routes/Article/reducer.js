@@ -15,7 +15,7 @@ export default function currentArticle(state = {
       });
     case types.LOAD_POST_SUCCESS:
       return update(state, {
-        article: { $set: action.body },
+        article: { $set: action.body.contentlist[0] },
         lastFetched: { $set: action.lastFetched },
         isLoading: { $set: false },
       });

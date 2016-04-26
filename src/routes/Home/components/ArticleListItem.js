@@ -2,11 +2,11 @@ import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
 import { StyleSheet, css } from 'aphrodite'
 
-import ArticleWrap from '../../components/ArticleWrap'
+import ArticleWrap from '../../../components/ArticleWrap'
 
 const ArticleListItem = ({ data }) =>
   <Link className={css(styles.link)}
-        to={`/post/cloth-talk-part-i`}>
+        to={`/article/${data.title}`}>
     <ArticleWrap data={data} />
   </Link>
 

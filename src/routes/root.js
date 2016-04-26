@@ -18,7 +18,7 @@ export default function createRoutes(store) {
         cb(null, [
 
           // other pages
-          require('./Post').default(store),
+          require('./Article').default(store),
 
           // 404
           require('./NotFound').default
@@ -27,7 +27,7 @@ export default function createRoutes(store) {
     },
     // index page
     indexRoute: {
-      component: require('./Index').default,
+      component: require('./Home/Home').default,
     }
   }
 

@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { StyleSheet, css } from 'aphrodite'
+import CircularProgress from 'material-ui/lib/circular-progress'
+import RefreshIndicator from 'material-ui/lib/refresh-indicator'
 
 import { Color } from '../style'
 
@@ -71,14 +73,22 @@ class Scroll extends Component {
 
   render() {
     const isLoading = this.props.isLoading || false
+    const isRefresh = this.props.isRefresh || false
     const { error } = this.props
     return (
       <div>
+        {
+          isRefresh &&
+          <div style={{textAlign: 'center'}}>
+            <RefreshIndicator size={40} left={0} top={0} status="loading"
+                              style={{display: 'inline-block',position: 'relative'}} />
+          </div>
+        }
         {this.props.children}
         {
-          isLoading && 
-          <div className={css(styles.loading)}>
-            <div className={css(styles.sp, styles.spCircle)}></div>
+          isLoading &&
+          <div style={{textAlign: 'center'}}>
+            <CircularProgress size={0.6} color={Color.theme} />
           </div>
         }
         {
@@ -95,6 +105,7 @@ class Scroll extends Component {
 Scroll.propTypes = {
   refresh: PropTypes.func,
   infinite: PropTypes.func,
+  isRefresh: PropTypes.bool.isRequired,
   isLoading: PropTypes.bool.isRequired,
   error: PropTypes.string
 }
@@ -103,19 +114,6 @@ const styles = StyleSheet.create({
   loading: {
     textAlign: 'center',
     padding: '.5rem 0'
-  },
-  sp: {
-    width: '32px',
-    height: '32px',
-    clear: 'both',
-    margin: '20px auto',
-  },
-  spCircle: {
-    border: '4px rgba(0, 0, 0, 0.25) solid',
-    borderTop: `4px ${Color.theme} solid`,
-    borderRadius: '50%',
-    WebkitAnimation: 'spCircRot .6s infinite linear',
-    animation: 'spCircRot .6s infinite linear',
   }
 })
 

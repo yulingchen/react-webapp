@@ -1,9 +1,13 @@
 if (typeof require.ensure !== 'function') require.ensure = (d, c) => c(require);
 import { injectAsyncReducer } from '../../store';
 
+/**
+ * app local change ===> server render
+ */
+
 export default function createRoutes(store) {
   return {
-    path: 'article/:aid',
+    path: 'article/:title',
     getComponents(location, cb) {
       require.ensure([
           './Article',

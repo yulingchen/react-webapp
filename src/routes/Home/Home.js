@@ -4,11 +4,15 @@ import { provideHooks } from 'redial'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 
+import Tabs from 'material-ui/lib/tabs/tabs'
+import Tab from 'material-ui/lib/tabs/tab'
+import Slider from 'material-ui/lib/slider'
+
 import { loadArticles } from './actions'
 import { mixinArticle } from '../Article/actions'
 import { Color } from '../../style'
 import Scroll from '../../components/Scroll'
-import ArticleListItem from './ArticleListItem'
+import ArticleListItem from './components/ArticleListItem'
 
 const redial = {
   fetch: ({ dispatch, getState }) => {
@@ -26,9 +30,44 @@ const mapStateToProps = (state) => ({
   isLoading: state.articles.isLoading
 })
 
-class Index extends Component {
+const styles = {
+  headline: {
+    fontSize: 24,
+    paddingTop: 16,
+    marginBottom: 12,
+    fontWeight: 400,
+  },
+};
+
+function handleActive(tab) {
+  alert(`A tab with this route property ${tab.props.route} was activated.`);
+}
+
+const TabsExampleSimple = () => (
+  <Tabs>
+    <Tab label="那么" >
+1
+    </Tab>
+    <Tab label="Item Two" >
+2
+    </Tab>
+    <Tab label="onActive">
+3
+    </Tab>
+    <Tab label="那么" >
+1
+    </Tab>
+    <Tab label="Item Two" >
+2
+    </Tab>
+  </Tabs>
+)
+class Home extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      slideIndex: 0,
+    }
     this.getMoreData = this.getMoreData.bind(this)
   }
   getMoreData(){
@@ -40,9 +79,16 @@ class Index extends Component {
   dispatchArticle(props) {
     this.props.dispatch(mixinArticle(props))
   }
+  handleChange = (value) => {
+    console.log(value)
+    this.setState({
+      slideIndex: value,
+    })
+  }
   renderArticleWrap(props) {
     return (
-      <div className={css(styles.articles)}>
+      <div>
+        <TabsExampleSimple />
         {
           props.map((item, key) =>
             <ArticleListItem key={key}
@@ -63,14 +109,8 @@ class Index extends Component {
   }
 }
 
-Index.propTypes = {
+Home.propTypes = {
   articles: PropTypes.array.isRequired
 }
 
-const styles = StyleSheet.create({
-  articles: {
-    padding: '0 .5rem'
-  }
-})
-
-export default provideHooks(redial)(connect(mapStateToProps)(Index))
+export default provideHooks(redial)(connect(mapStateToProps)(Home))

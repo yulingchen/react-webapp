@@ -4,17 +4,36 @@ import { routerReducer } from 'react-router-redux'
 import { environment, WINDOWSTORE } from './routes/App/reducer'
 
 import articles from './routes/Index/reducer'
+import currentArticle from './routes/Article/reducer'
 
-// Only combine reducers needed for initial render, others will be
-// added async
 export default function createReducer(asyncReducers) {
   return combineReducers({
+    /**
+     * react-router-redux
+     * routes change mixin
+     */
     routing: routerReducer,
+
     environment,
+
+    /**
+     * url, scoll, store, environment ... mixin
+     */
     WINDOWSTORE,
 
+    /**
+     * index pages
+     */
     articles,
 
+    /**
+     * client[not app] url change ===> server render
+     */
+    currentArticle,
+    
+    /**
+     * other
+     */
     ...asyncReducers,
   })
 }

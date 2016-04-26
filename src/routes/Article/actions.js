@@ -5,7 +5,11 @@ import {
 } from '../../constants';
 import http from '../../utils/HttpClient';
 
-export function loadPost(aid) {
+export function loadPost(title) {
+  const params = {
+    title: title
+  }
+  console.log(params)
   return {
     // Types of actions to emit before and after
     types: [LOAD_POST_REQUEST, LOAD_POST_SUCCESS, LOAD_POST_FAILURE],
@@ -14,9 +18,9 @@ export function loadPost(aid) {
     // shouldCallAPI: (state) => shouldFetchPost(state),
 
     // Perform the fetching:
-    callAPI: () => http.get(`/api/article/${aid}`),
+    callAPI: () => http.post(`/api/article/${title}`, { params: encodeURI(params) }),
 
     // Arguments to inject in begin/end actions
-    payload: { aid },
+    payload: { title: title },
   }
 }

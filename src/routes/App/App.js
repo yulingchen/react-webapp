@@ -1,13 +1,20 @@
 import React, { Component, PropTypes } from 'react'
 import Helmet from 'react-helmet'
-import { StyleSheet, css } from 'aphrodite'
 
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
+/**
+ * material-ui server render
+ */
+import getMuiTheme from 'material-ui/lib/styles/getMuiTheme'
+import themeDecorator from 'material-ui/lib/styles/theme-decorator'
+import colors from 'material-ui/lib/styles/colors'
+import injectTapEventPlugin from 'react-tap-event-plugin'
 
 import { connect } from 'react-redux'
 import { initEnvironment } from './actions.js'
 
 import ScrollUp from '../../components/ScrollUp'
+
+injectTapEventPlugin()
 
 class App extends Component {
   constructor(props) {
@@ -17,11 +24,10 @@ class App extends Component {
    * diapatch environment
    */
   componentDidMount() {
-    const {dispatch} = this.props
+    const { dispatch } = this.props
     dispatch(initEnvironment())
   }
   render() {
-    const right = <button>'right'</button>
     return (
       <div>
         <Helmet
@@ -39,14 +45,6 @@ App.propTypes = {
   dispatch: PropTypes.func.isRequired
 }
 
-const styles = StyleSheet.create({
-  root: {
-    maxWidth: 700,
-    color: '#000',
-    margin: '2rem auto',
-  }
-})
-
 function mapStateToProps(state) {
   const { environment } = state
   return {
@@ -56,6 +54,21 @@ function mapStateToProps(state) {
   }
 }
 
+const muiTheme = getMuiTheme({
+  palette: {
+    primary1Color: colors.green500,
+    primary2Color: colors.green700,
+    primary3Color: colors.green100,
+  },
+  fontFamily: 'Arial,Helvetica,sans-serif',
+}, {
+  avatar: {
+    borderColor: null,
+  },
+  userAgent: false
+  // userAgent: 'all'
+})
+
 export default connect(
   mapStateToProps
-)(App)
+)(themeDecorator(muiTheme)(App))
