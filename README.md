@@ -1,5 +1,26 @@
-# react-shopping#bate
+# React-webapp - "isomorphic" web app
 
-## sign
+> React-webapp built with redux, react-route, express, material-ui
 
-* wating...
+## Installation
+
+	$ get clone git@github.com:luckcoding/react-webapp.git
+	$ npm install || sudo npm install
+	
+### Master
+	
+###### Development
+	
+	$ npm start
+
+###### Production
+	
+	$ npm run build
+	
+### Server-render
+	
+> Future code
+
+### Base-starter
+
+> Simple starter
