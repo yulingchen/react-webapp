@@ -9,7 +9,6 @@ class Scroll extends Component {
   
   constructor(props) {
     super(props)
-    this.handleScroll = this.handleScroll.bind(this)
   }
 
   componentDidMount() {
@@ -20,11 +19,10 @@ class Scroll extends Component {
     window.removeEventListener('scroll', this.handleScroll)
   }
 
-  handleScroll(e) {
+  handleScroll = (e) => {
     e.preventDefault()
     if (this.getScrollTop() + this.getWindowHeight() === this.getScrollHeight() && !this.props.isLoading) {
-      console.log('tootototootototootoo')
-      this.props.infinite()
+      this.props.doInfinite()
     }
   }
 
@@ -74,7 +72,7 @@ class Scroll extends Component {
   render() {
     const isLoading = this.props.isLoading || false
     const isRefresh = this.props.isRefresh || false
-    const { error } = this.props
+    const { isError } = this.props
     return (
       <div>
         {
@@ -85,16 +83,16 @@ class Scroll extends Component {
           </div>
         }
         {this.props.children}
-        {
-          isLoading &&
-          <div style={{textAlign: 'center'}}>
+        <div style={{textAlign: 'center',minHeight: '60px'}}>
+          {
+            isLoading &&
             <CircularProgress size={0.6} color={Color.theme} />
-          </div>
-        }
+          }
+        </div>
         {
-          error &&
+          isError &&
           <div className={css(styles.loading)}>
-            error
+            isError
           </div>
         }
       </div>
@@ -103,11 +101,11 @@ class Scroll extends Component {
 }
 
 Scroll.propTypes = {
-  refresh: PropTypes.func,
-  infinite: PropTypes.func,
   isRefresh: PropTypes.bool.isRequired,
   isLoading: PropTypes.bool.isRequired,
-  error: PropTypes.string
+  isError: PropTypes.string,
+  doRefresh: PropTypes.func,
+  doInfinite: PropTypes.func,
 }
 
 const styles = StyleSheet.create({

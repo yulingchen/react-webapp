@@ -6,10 +6,9 @@ import {
 import http from '../../utils/HttpClient';
 
 export function loadPost(title) {
-  const params = {
+  const request = encodeURI(JSON.stringify({
     title: title
-  }
-  console.log(params)
+  }))
   return {
     // Types of actions to emit before and after
     types: [LOAD_POST_REQUEST, LOAD_POST_SUCCESS, LOAD_POST_FAILURE],
@@ -18,7 +17,7 @@ export function loadPost(title) {
     // shouldCallAPI: (state) => shouldFetchPost(state),
 
     // Perform the fetching:
-    callAPI: () => http.post(`/api/article/${title}`, { params: encodeURI(params) }),
+    callAPI: () => http.post(`/api/article/${title}`, { request: request }),
 
     // Arguments to inject in begin/end actions
     payload: { title: title },

@@ -7,6 +7,7 @@ const router = new Router()
 router.post('/:title', (req, res) => {
   res.statusCode = 200
   console.log('title======>',req.params.title)
+  console.log('req.body.params===>',JSON.parse(decodeURI(req.body.request)))
   const options = {
     method: 'POST',
     url: 'http://route.showapi.com/109-35',
@@ -19,7 +20,7 @@ router.post('/:title', (req, res) => {
      * page
      */
     form: {
-      ...decodeURI(req.body.params),
+      ...JSON.parse(decodeURI(req.body.request)),
       showapi_appid: '18270',
       showapi_sign: 'c6c9ffa3d23941488e13a4a9f1a14ce6',
       // title: req.params.title,

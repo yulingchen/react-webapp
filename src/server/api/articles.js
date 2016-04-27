@@ -24,7 +24,6 @@ router.post('/', (req, res) => {
   }
   request(options,function (err,resp) {
     const data = JSON.parse(resp.body)
-    console.log('data222222222====>',data)
     if (data.showapi_res_code === 0) {
       if (data.showapi_res_body.ret_code === 0) {
         res.json(data.showapi_res_body.pagebean)

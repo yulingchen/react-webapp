@@ -102,11 +102,48 @@ const renderFullPage = (data, initialState, assets) => {
         <meta charSet="utf-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
          ${head.title.toString()}
-         <meta name="viewport" content="width=device-width, initial-scale=1" />
+         <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
          ${head.meta.toString()}
          ${head.link.toString()}
-         <link href="//cdn.bootcss.com/normalize/3.0.3/normalize.css" rel="stylesheet">
+         <link rel="stylesheet" href="//cdn.bootcss.com/normalize/3.0.3/normalize.css">
          <link rel="stylesheet" href="//cdn.jsdelivr.net/flexboxgrid/6.3.0/flexboxgrid.min.css" type="text/css" >
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.3.15/slick.css" />
+         <style>
+          html {
+            min-width: 320px;
+            overflow-x: hidden;
+            font-family: Helvetica-Neue,Helvetica,Arial,sans-serif;
+          }
+          body {
+            font-size-adjust: none;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -webkit-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: rgba(0,0,0,0.1);
+            -webkit-text-size-adjust: none;
+            font-size: 14px;
+            line-height: 1.5;
+            font-family: "Droid Sans","Droid Sans Fallback","Helvetica Neue",Helvetica,STHeiTi,sans-serif
+          }
+          a img {
+            border: 0;
+          }
+
+          :focus {
+            outline: 0;
+          }
+          ol,ul {
+            list-style: none;
+          }
+
+          h1,h2,h3,h4,h5,p,span {
+            overflow: visible;
+          }
+          a, a:active, a:visited {
+            color: inherit;
+            text-decoration: none;
+          }
+         </style>
          <style data-aphrodite>${data.css.content}</style>
       </head>
       <body>

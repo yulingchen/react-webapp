@@ -13,7 +13,7 @@ const ArticleWrap = ({ data }) =>
           <span className={css(styles.author)}>{data.source}</span>
           <span className={css(styles.note)}>{(data.pubDate).split(" ")[0]}</span>
         </div>
-        <div className={css(styles.full, styles.title)}>
+        <div className={css(styles.full)}>
           <h3>{(data.title).substr(0,25)}</h3>
         </div>
         <div className={css(styles.full, styles.tags)}>
@@ -46,9 +46,6 @@ const styles = StyleSheet.create({
   note: {
     color: Color.note,
     marginLeft: '8px'
-  },
-  title: {
-    paddingTop: '.8rem'
   },
   tags: {
     paddingTop: '.8rem'

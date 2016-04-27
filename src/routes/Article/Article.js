@@ -21,12 +21,12 @@ const mapStateToProps = state => ({
 })
 
 const Article = ({ article, isLoading, error }) =>
-<Card>
-  <AppBar />
-  <CardText className="row">
-    <div dangerouslySetInnerHTML={{__html: article.html}} />
-  </CardText>
-</Card>
+  <Card>
+    <AppBar />
+    <CardText className="row">
+      <div dangerouslySetInnerHTML={{__html: article.html}} />
+    </CardText>
+  </Card>
 
 
 Article.propTypes = {
