@@ -1,6 +1,7 @@
 import React, { PropTypes, Component } from 'react'
 import TweenFunctions from 'tween-functions'
 import Upward from './SVG/Upward'
+import { getScrollTop } from '../utils/WindowDocument'
 
 class ScrollUp extends Component {
 
@@ -65,7 +66,7 @@ class ScrollUp extends Component {
   }
 
   handleScroll() {
-    if (this.getScrollTop() > this.props.showUnder) {
+    if (getScrollTop() > this.props.showUnder) {
       this.setState({show: true})
     } else {
       this.setState({show: false})
@@ -74,7 +75,7 @@ class ScrollUp extends Component {
 
   handleClick() {
     this.stopScrolling()
-    this.data.startValue = this.getScrollTop()
+    this.data.startValue = getScrollTop()
     this.data.currentTime = 0
     this.data.startTime = null
     this.data.rafId = window.requestAnimationFrame(this.scrollStep)
@@ -94,30 +95,16 @@ class ScrollUp extends Component {
       this.props.duration
     )
 
-    if (this.getScrollTop() <= this.props.topPosition) {
+    if (getScrollTop() <= this.props.topPosition) {
       this.stopScrolling()
     } else {
-      window.scrollTo(this.getScrollTop(), position)
+      window.scrollTo(getScrollTop(), position)
       this.data.rafId = window.requestAnimationFrame(this.scrollStep)
     }
   }
 
   stopScrolling() {
     window.cancelAnimationFrame(this.data.rafId)
-  }
-  /**
-  * 滚动条在Y轴上的滚动距离
-  */
-  getScrollTop() {
-    var scrollTop = 0, bodyScrollTop = 0, documentScrollTop = 0
-    if (document.body) {
-      bodyScrollTop = document.body.scrollTop
-    }
-    if (document.documentElement) {
-      documentScrollTop = document.documentElement.scrollTop
-    }
-    scrollTop = (bodyScrollTop - documentScrollTop > 0) ? bodyScrollTop : documentScrollTop
-    return scrollTop
   }
 
   render() {

@@ -5,8 +5,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Router from 'react-router/lib/Router';
 import match from 'react-router/lib/match';
+import useRouterHistory from 'react-router/lib/useRouterHistory';
 import browserHistory from 'react-router/lib/browserHistory';
+import createBrowserHistory from 'history/lib/createBrowserHistory';
 import { syncHistoryWithStore } from 'react-router-redux';
+import useScroll from 'scroll-behavior/lib/useStandardScroll';
 import { Provider } from 'react-redux';
 import { StyleSheet } from 'aphrodite';
 
@@ -21,8 +24,11 @@ const { pathname, search, hash } = window.location;
 const location = `${pathname}${search}${hash}`;
 const container = document.getElementById('root');
 
+// use scroll-behavior
+const appHistory = useScroll(useRouterHistory(createBrowserHistory))();
+
 // routes reducer into store
-const history = syncHistoryWithStore(browserHistory, store)
+const history = syncHistoryWithStore(appHistory, store)
 
 StyleSheet.rehydrate(window.renderedClassNames);
 

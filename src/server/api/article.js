@@ -6,8 +6,6 @@ const router = new Router()
 
 router.post('/:title', (req, res) => {
   res.statusCode = 200
-  console.log('title======>',req.params.title)
-  console.log('req.body.params===>',JSON.parse(decodeURI(req.body.request)))
   const options = {
     method: 'POST',
     url: 'http://route.showapi.com/109-35',

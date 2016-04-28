@@ -9,6 +9,7 @@ import Tabs from 'material-ui/lib/tabs/tabs'
 import Tab from 'material-ui/lib/tabs/tab'
 import Slider from 'react-slick'
 import SwipeableViews from 'react-swipeable-views'
+import Colors from 'material-ui/lib/styles/colors'
 
 import { loadArticles } from './actions'
 import { mixinArticle } from '../Article/actions'
@@ -17,7 +18,8 @@ import Scroll from '../../components/Scroll'
 import ScrollUp from '../../components/ScrollUp'
 import ArticleListItem from './components/ArticleListItem'
 import ArrowLeft from '../../components/SVG/ArrowLeft'
-import Colors from 'material-ui/lib/styles/colors'
+
+import { getScrollTop } from '../../utils/WindowDocument'
 
 const redial = {
   fetch: ({ dispatch, getState }) => {
@@ -38,34 +40,43 @@ const mapStateToProps = (state) => ({
 })
 
 class Home extends Component {
+
   constructor(props) {
     super(props)
     this.state = {
       slideIndex: 0
     }
-    // this.getMoreData = this.getMoreData.bind(this)
   }
-  doInfinite = (index) => {
-    console.log('index',index)
+
+  doInfinite = () => {
     const { allPages, currentPage } = this.props
     if (currentPage < allPages) {
       this.props.dispatch(loadArticles(currentPage + 1))
     }
   }
+
   dispatchArticle(props) {
     this.props.dispatch(mixinArticle(props))
   }
+
   handleChange = (value) => {
-    console.log(value)
+    const { slideIndex } = this.state
+    Object.keys(this.state).map((item)=>{
+      if (item === `Scroll${value}`) {
+        document.body.scrollTop = this.state[item]
+      }
+    })
+    const scrollTop = getScrollTop()
     this.setState({
+      [`Scroll${slideIndex}`]: scrollTop,
       slideIndex: value,
     })
   }
+
   render() {
     const { articles, isLoading, error } = this.props
     return (
-      <Scroll index={this.state.slideIndex}
-              doInfinite={this.doInfinite}
+      <Scroll doInfinite={this.doInfinite}
               isLoading={isLoading}
               isError={error}>
         <Helmet title="微信 WEBAPP"
@@ -95,12 +106,7 @@ class Home extends Component {
               )}
           </div>
           <div>
-              {
-                articles.map((item, key) =>
-                  <ArticleListItem key={key}
-                                   data={item}
-                                   onClick={this.dispatchArticle.bind(this, item)} />
-              )}
+            s
           </div>
         </SwipeableViews>
         <ScrollUp showUnder={500} />
