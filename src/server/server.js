@@ -84,6 +84,8 @@ if (isDeveloping) {
   server.use(webpackHotMiddleware(compiler, {
     log: console.log,
   }));
+
+  server.use('/src/static', express.static('./src/static'));
 } else {
   assets = require('../../assets.json');
   server.use(morgan('combined'));
@@ -107,7 +109,6 @@ const renderFullPage = (data, initialState, assets) => {
          ${head.link.toString()}
          <link rel="stylesheet" href="//cdn.bootcss.com/normalize/3.0.3/normalize.css">
          <link rel="stylesheet" href="//cdn.jsdelivr.net/flexboxgrid/6.3.0/flexboxgrid.min.css" type="text/css" >
-         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.3.15/slick.css" />
          <style>
           html {
             min-width: 320px;

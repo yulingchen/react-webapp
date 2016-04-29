@@ -17,7 +17,6 @@ import { Color } from '../../style'
 import Scroll from '../../components/Scroll'
 import ScrollUp from '../../components/ScrollUp'
 import ArticleListItem from './components/ArticleListItem'
-import ArrowLeft from '../../components/SVG/ArrowLeft'
 
 import { getScrollTop } from '../../utils/WindowDocument'
 
@@ -60,16 +59,8 @@ class Home extends Component {
   }
 
   handleChange = (value) => {
-    const { slideIndex } = this.state
-    Object.keys(this.state).map((item)=>{
-      if (item === `Scroll${value}`) {
-        document.body.scrollTop = this.state[item]
-      }
-    })
-    const scrollTop = getScrollTop()
     this.setState({
-      [`Scroll${slideIndex}`]: scrollTop,
-      slideIndex: value,
+      slideIndex: value
     })
   }
 
@@ -84,8 +75,6 @@ class Home extends Component {
         <Tabs onChange={this.handleChange}
               value={this.state.slideIndex}>
           <Tab label="新闻" value={0} />
-          <Tab label="体育" value={1} />
-          <Tab label="其他" value={2} />
         </Tabs>
         <SwipeableViews index={this.state.slideIndex}
                         onChangeIndex={this.handleChange}>
@@ -96,17 +85,6 @@ class Home extends Component {
                                    data={item}
                                    onClick={this.dispatchArticle.bind(this, item)} />
               )}
-          </div>
-          <div>
-              {
-                articles.map((item, key) =>
-                  <ArticleListItem key={key}
-                                   data={item}
-                                   onClick={this.dispatchArticle.bind(this, item)} />
-              )}
-          </div>
-          <div>
-            s
           </div>
         </SwipeableViews>
         <ScrollUp showUnder={500} />

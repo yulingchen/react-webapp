@@ -14,11 +14,17 @@ export default function currentArticle(state = {
         error: { $set: null }
       });
     case types.LOAD_POST_SUCCESS:
-      return update(state, {
-        article: { $set: action.body.contentlist[0] },
-        lastFetched: { $set: action.lastFetched },
-        isLoading: { $set: false },
-      });
+      if (action.body.contentlist[0]) {
+        return update(state, {
+          article: { $set: action.body.contentlist[0]},
+          lastFetched: { $set: action.lastFetched },
+          isLoading: { $set: false },
+        })
+      } else {
+        return update(state, {
+          error: { $set: '此文章暂时无法解析！！' },
+        })
+      }
     case types.LOAD_POST_FAILURE:
       return update(state, {
         error: { $set: action.error },

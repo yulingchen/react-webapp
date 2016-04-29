@@ -1,6 +1,9 @@
 import React, { PropTypes, Component } from 'react'
 import TweenFunctions from 'tween-functions'
-import Upward from './SVG/Upward'
+import IconButton from 'material-ui/lib/icon-button'
+import NavigationArrowUpward from 'material-ui/lib/svg-icons/navigation/arrow-upward'
+
+import { Color } from '../style'
 import { getScrollTop } from '../utils/WindowDocument'
 
 class ScrollUp extends Component {
@@ -111,7 +114,7 @@ class ScrollUp extends Component {
     const propStyle = this.props.style;
     const element =
             <div style={propStyle} onClick={this.handleClick}>
-              <span><Upward /></span>
+              <IconButton><NavigationArrowUpward color={Color.theme} /></IconButton>
             </div>
 
     var style = Object.assign({}, propStyle)

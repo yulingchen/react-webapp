@@ -58,6 +58,7 @@ let render = () => {
       // Get array of route handler components:
       const { components } = renderProps;
 
+      console.log('renderProps',renderProps)
       // Define locals to be provided to all lifecycle hooks:
       const locals = {
           path: renderProps.location.pathname,
