@@ -25,7 +25,7 @@ const container = document.getElementById('root');
 
 // use scroll-behavior
 const createScrollHistory = useScroll(createBrowserHistory)
-const appHistory = useRouterHistory(createBrowserHistory)()
+const appHistory = useRouterHistory(createScrollHistory)()
 
 // routes reducer into store
 const history = syncHistoryWithStore(appHistory, store)

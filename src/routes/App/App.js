@@ -15,6 +15,11 @@ import { initEnvironment } from './actions.js'
 
 import ScrollUp from '../../components/ScrollUp'
 
+import normalize from '../../styles/normalize.css'
+import flexboxgrid from '../../styles/flexboxgrid.css'
+
+Object.assign(normalize, flexboxgrid)
+
 injectTapEventPlugin()
 
 class App extends Component {

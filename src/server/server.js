@@ -83,7 +83,7 @@ server.get('*', async (req, res, next) => {
     const routes = createRoutes(store);
     const { dispatch, getState } = store;
 
-    match({ routes, history, location: req.url }, (err, redirectLocation, renderProps) => {
+    match({ history, routes, location: req.url }, (err, redirectLocation, renderProps) => {
       if (err) {
         console.error(err);
         return res.status(500).send('Internal server error');
