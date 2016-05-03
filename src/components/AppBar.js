@@ -1,7 +1,4 @@
 import React, { Component, PropTypes } from 'react'
-import { StyleSheet, css } from 'aphrodite'
-
-import { Color } from '../style'
 
 export default class AppBar extends Component {
   
@@ -62,18 +59,3 @@ AppBar.propTypes = {
   right: PropTypes.node,
   title: PropTypes.string
 }
-
-const styles = StyleSheet.create({
-  bar: {
-    borderBottom: `1px solid ${Color.line}`,
-    height: '3rem',
-    width: '100%',
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    background: Color.bar
-  },
-  title: {
-    textAlign: 'center'
-  }
-})

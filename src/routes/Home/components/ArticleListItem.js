@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
 import { StyleSheet, css } from 'aphrodite'
 
-import ArticleWrap from '../../../components/ArticleWrap'
+import ArticleWrap from '../../../components/ArticleWrap/ArticleWrap'
 
 const ArticleListItem = ({ data }) =>
   <Link 

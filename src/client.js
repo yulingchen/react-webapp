@@ -24,8 +24,7 @@ const location = `${pathname}${search}${hash}`;
 const container = document.getElementById('root');
 
 // use scroll-behavior
-const createScrollHistory = useScroll(createBrowserHistory)
-const appHistory = useRouterHistory(createScrollHistory)()
+const appHistory = useScroll(useRouterHistory(createBrowserHistory))()
 
 // routes reducer into store
 const history = syncHistoryWithStore(appHistory, store)
@@ -55,8 +54,6 @@ let render = () => {
     match({ routes, location }, (error, redirectLocation, renderProps) => {
       // Get array of route handler components:
       const { components } = renderProps;
-
-      console.log('renderProps',renderProps)
       // Define locals to be provided to all lifecycle hooks:
       const locals = {
           path: renderProps.location.pathname,

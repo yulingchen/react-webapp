@@ -1,11 +1,13 @@
 import React, { Component, PropTypes } from 'react'
-import { StyleSheet, css } from 'aphrodite'
 import CircularProgress from 'material-ui/lib/circular-progress'
 import RefreshIndicator from 'material-ui/lib/refresh-indicator'
 
-import { getScrollTop, getScrollHeight, getWindowHeight } from '../utils/WindowDocument'
-
 import { Color } from '../style'
+import {
+  getScrollTop,
+  getScrollHeight,
+  getWindowHeight
+} from '../utils/WindowDocument'
 
 class Scroll extends Component {
   
@@ -50,7 +52,7 @@ class Scroll extends Component {
         </div>
         {
           isError &&
-          <div className={css(styles.loading)}>
+          <div style={{textAlign: 'center',padding: '.5rem 0'}}>
             isError
           </div>
         }
@@ -66,12 +68,5 @@ Scroll.propTypes = {
   doRefresh: PropTypes.func,
   doInfinite: PropTypes.func,
 }
-
-const styles = StyleSheet.create({
-  loading: {
-    textAlign: 'center',
-    padding: '.5rem 0'
-  }
-})
 
 export default Scroll
