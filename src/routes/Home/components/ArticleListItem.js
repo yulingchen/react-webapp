@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
-import { StyleSheet, css } from 'aphrodite'
 
 import ArticleWrap from '../../../components/ArticleWrap/ArticleWrap'
 
@@ -9,13 +8,5 @@ const ArticleListItem = ({ data }) =>
         to={`/article/${data.title}`}>
     <ArticleWrap data={data} />
   </Link>
-
-// const styles = StyleSheet.create({
-//   link: {
-//     ':visited': {
-//       color: '#999'
-//     }
-//   }
-// })
 
 export default ArticleListItem

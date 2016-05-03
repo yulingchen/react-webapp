@@ -1,5 +1,4 @@
 import React, { PropTypes, Component } from 'react'
-import { StyleSheet, css } from 'aphrodite'
 import { provideHooks } from 'redial'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'

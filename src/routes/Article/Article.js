@@ -1,7 +1,6 @@
 import React, { PropTypes, Component } from 'react'
 import { connect } from 'react-redux'
 import { provideHooks } from 'redial'
-import { StyleSheet, css } from 'aphrodite'
 import Helmet from 'react-helmet'
 
 import AppBar from 'material-ui/lib/app-bar'

@@ -14,8 +14,7 @@ module.exports = {
       'react-dom',
       'react-router',
       'redux',
-      'react-redux',
-      'aphrodite'
+      'react-redux'
     ]
   },
   output: {

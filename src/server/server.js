@@ -18,7 +18,6 @@ import { Provider } from 'react-redux'
 import { trigger } from 'redial'
 
 import { callAPIMiddleware } from '../middleware/callAPIMiddleware';
-import { StyleSheetServer } from 'aphrodite';
 import { configureStore } from '../store';
 import reducer from '../createReducer';
 import createRoutes from '../routes/root';
@@ -73,8 +72,9 @@ if (isDeveloping) {
 
 import renderFullPage from './renderFullPage'
 
-// SSR Logic
-server.get('*', async (req, res, next) => {
+server.use('/wechat', require('./wechat/wechat'))
+
+server.use(async (req, res, next) => {
   try {
     const memoryHistory = createMemoryHistory(req.path)
     let store = configureStore(memoryHistory)
