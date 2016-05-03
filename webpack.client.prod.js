@@ -1,6 +1,8 @@
 // jscs:disable
 var path = require('path');
 var webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const autoprefixer = require('autoprefixer');
 var AssetsPlugin = require('assets-webpack-plugin');
 
 module.exports = {
@@ -39,7 +41,8 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production'),
       '__DEV__': false,
-    })
+    }),
+    new ExtractTextPlugin('style.css', { allChunks: true }),
   ],
   module: {
     loaders: [
@@ -48,6 +51,14 @@ module.exports = {
         loader: 'babel-loader?presets[]=es2015&presets[]=react&presets[]=stage-0',
         include: path.join(__dirname, 'src')
       },
+      {
+        test: /\.css$/i,
+        loader: ExtractTextPlugin.extract('style',
+          'css?modules&localIdentName=[name]_[local]__[hash:base64:5]!postcss'),
+      }
     ]
-  }
+  },
+  postcss: [
+    autoprefixer({ browsers: ['last 2 versions'] })
+  ]
 };

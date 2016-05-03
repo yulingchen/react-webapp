@@ -1,7 +1,8 @@
 // jscs:disable
 var path = require('path');
 var webpack = require('webpack');
-var AssetsPlugin = require('assets-webpack-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var autoprefixer = require('autoprefixer');
 
 module.exports = {
   devtool: 'source-map',
@@ -35,6 +36,7 @@ module.exports = {
       'process.env.NODE_ENV': JSON.stringify('development'),
       '__DEV__': true,
     }),
+    new ExtractTextPlugin('style.css', { allChunks: true }),
   ],
   module: {
     loaders: [
@@ -42,7 +44,15 @@ module.exports = {
         test: /\.js$/,
         loaders: ['babel'],
         include: path.join(__dirname, 'src')
+      },
+      {
+        test: /\.css$/i,
+        loader: ExtractTextPlugin.extract('style',
+          'css?modules&localIdentName=[name]_[local]__[hash:base64:5]!postcss'),
       }
     ]
-  }
+  },
+  postcss: [
+    autoprefixer({ browsers: ['last 2 versions'] })
+  ],
 };

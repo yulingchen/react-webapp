@@ -11,26 +11,24 @@ import createBrowserHistory from 'history/lib/createBrowserHistory';
 import { syncHistoryWithStore } from 'react-router-redux';
 import useScroll from 'scroll-behavior/lib/useStandardScroll';
 import { Provider } from 'react-redux';
-import { StyleSheet } from 'aphrodite';
 
 import { configureStore } from './store';
 
-const initialState = window.INITIAL_STATE || {};
+let initialState = window.INITIAL_STATE || {};
 
 // Set up Redux (note: this API requires redux@>=3.1.0):
-const store = configureStore(initialState);
+const store = configureStore(browserHistory, initialState);
 const { dispatch, getState } = store;
 const { pathname, search, hash } = window.location;
 const location = `${pathname}${search}${hash}`;
 const container = document.getElementById('root');
 
 // use scroll-behavior
-const appHistory = useScroll(useRouterHistory(createBrowserHistory))();
+const createScrollHistory = useScroll(createBrowserHistory)
+const appHistory = useRouterHistory(createBrowserHistory)()
 
 // routes reducer into store
 const history = syncHistoryWithStore(appHistory, store)
-
-StyleSheet.rehydrate(window.renderedClassNames);
 
 let render = () => {
   // We need to have a root route for HMR to work.

@@ -1,14 +1,16 @@
 import { createStore, applyMiddleware, compose } from 'redux'
-import thunk from 'redux-thunk'
+import thunkMiddleware from 'redux-thunk'
 import createLogger from 'redux-logger'
+import { routerMiddleware } from 'react-router-redux'
 import { callAPIMiddleware } from './middleware/callAPIMiddleware'
 import createReducer from './createReducer'
 
-export function configureStore(initialState = {}) {
+export function configureStore(history, initialState = {}) {
   let store = createStore(createReducer(), initialState, compose(
     applyMiddleware(
-      thunk,
+      thunkMiddleware,
       callAPIMiddleware,
+      routerMiddleware(history),
       createLogger()
     ),
 

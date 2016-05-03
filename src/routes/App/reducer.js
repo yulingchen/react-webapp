@@ -37,23 +37,3 @@ export function environment(state = {
       return state
   }
 }
-
-
-/**
- * WINDOWSTORE
- *
- * 存储 : 路由 + 数据流 + window对象
- * 
- */
-
-export function WINDOWSTORE(state = {
-  routes: []
-}, action) {
-  switch (action.type) {
-    case '@@router/LOCATION_CHANGE':
-      console.log('ScrollTop',getScrollTop())
-      return state
-    default:
-      return state
-  }
-}
