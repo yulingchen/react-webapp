@@ -23,40 +23,41 @@ router.get('/', (req, res) => {
   const { msg_signature, timestamp, nonce, echostr } = req.query
   const cryptor = new WXBizMsgCrypt(config.token, config.encodingAESKey, config.corpId)
   const s = cryptor.decrypt(echostr)
+  res.send(s.message)
 })
 
-router.post('/', (req, respon, next) => {
-  const datas = {
+router.post('/', (request, response, next) => { 
+  const secreat = {
     "corpid":'wx4ced8252c42ff92b',
     "corpsecret":'aG6T6LKJCIH2xrMGAJtI17GzEGKNvygxIv2aw8DH8uBi1H-b1uEgoGlUpRx71n94'
   }
-  const content=querystring.stringify(datas)
   const options = {
     method: 'GET',
     hostname: 'qyapi.weixin.qq.com',
-    path: '/cgi-bin/gettoken?' + content,
-  } 
-  var getacctoken = function ( options ) {
+    path: '/cgi-bin/gettoken?' + querystring.stringify(secreat),
+  }
+  getToken(options)
+  function getToken (options) {
     var req = https.request(options, function (res) {
       res.setEncoding('utf8');  
       res.on('data', function (chunk) {
-        var result=JSON.parse(chunk); 
+        var result=JSON.parse(chunk);
+        processMse(request,response,next,result.access_token)
+
       })
     })
     req.on('error', function (e) {  
       console.log(e);
       console.log('problem with request: ' + e.message)
     })
-    req.end()
   }
-    getacctoken(options)
-    processMse(req,respon)
-    next()
+
+  next()
 })
 
 function processMse(req,res,next,tocken){
         var post_data='';
-        req.on('data', function (chunk) {  
+        req.on('data', function (chunk) {
                // console.log('BODY: ' + chunk);
                 post_data+=chunk;
                
