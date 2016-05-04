@@ -72,8 +72,6 @@ if (isDeveloping) {
 
 import renderFullPage from './renderFullPage'
 
-server.use('/wechat', require('./wechat/wechat'))
-
 server.use(async (req, res, next) => {
   try {
     const memoryHistory = createMemoryHistory(req.path)
