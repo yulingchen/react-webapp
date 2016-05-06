@@ -15,7 +15,7 @@ class App extends Component {
    * diapatch environment
    */
   componentDidMount() {
-    const {dispatch} = this.props
+    const { dispatch } = this.props
     dispatch(initEnvironment())
   }
 

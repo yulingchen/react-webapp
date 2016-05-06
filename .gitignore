@@ -1,4 +1,5 @@
 node_modules
-build/
+build/*
+!build/index.html
 static/
 npm-debug.log

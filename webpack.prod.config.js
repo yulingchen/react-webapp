@@ -1,30 +1,30 @@
 var path = require('path');
 var webpack = require('webpack');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-// var autoprefixer = require('autoprefixer');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+// const autoprefixer = require('autoprefixer');
 
 module.exports = {
-  devServer: {
-    historyApiFallback: true,
-    hot: true,
-    inline: true,
-    progress: true,
-    contentBase: './src',
-    port: 8080
+  devtool: false,
+  entry:  {
+    main: ['./src/index.js'],
   },
-  entry: [
-    'webpack/hot/dev-server',
-    'webpack-dev-server/client?http://localhost:8080',
-    './src/index.js'
-  ],
   output: {
-    path: __dirname + '/build',
-    filename: '[name].js',
-    publicPath: '/'
+     path: __dirname + '/build',
+     filename: '[name].js',
+     publicPath: '/build/'
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new ExtractTextPlugin('main.css', { allChunks: true })
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        unused: true,
+        dead_code: true,
+        warnings: false,
+        screw_ie8: true,
+      }
+    }),
+    new webpack.NoErrorsPlugin(),
+    new ExtractTextPlugin('main.css', { allChunks: true }),
   ],
   module: {
     loaders:[
@@ -54,10 +54,7 @@ module.exports = {
       }
     ]
   },
-  resolve: {
-    extensions: ['', '.js', '.jsx'],
-  },
   // postcss: [
   //   autoprefixer({ browsers: ['last 2 versions'] })
-  // ],
+  // ]
 }

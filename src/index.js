@@ -4,9 +4,8 @@ import { Provider } from 'react-redux'
 import { Router, browserHistory} from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
 
-import route from './routes'
+import rootRoute from './routes'
 import configureStore from './store/configureStore.js'
-
 
 import './styles/app.scss'
 
@@ -16,7 +15,7 @@ const history = syncHistoryWithStore(browserHistory, store)
 
 render(
   <Provider store={store}>
-    <Router history={history} routes={route}/>
+    <Router history={history} routes={rootRoute}/>
   </Provider>,
   document.getElementById('root')
 )

@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react'
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import classNames from 'classnames/bind'
 import EventEmitter from 'events'
 
